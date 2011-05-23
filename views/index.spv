@@ -4,4 +4,4 @@
 	For making a presentation in a very short amount of time.
 </p>
 
-: this.editor("/")
+: this.editor("/new")
