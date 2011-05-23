@@ -15,3 +15,10 @@
         </div>
     </body>
 </html>
+
+<~method editor(action, body)>
+	<form action="<%= action %>" method="post">
+		<textarea name="body" id="body"><%= body %></textarea>
+		<input type="submit" value="Make it" />
+	</form>
+</~method>

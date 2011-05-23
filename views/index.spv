@@ -4,8 +4,4 @@
 	For making a presentation in a very short amount of time.
 </p>
 
-
-<form action="/" method="post">
-    <textarea></textarea>
-    <input type="submit" value="Make it" />
-</form>
+: this.editor("/")

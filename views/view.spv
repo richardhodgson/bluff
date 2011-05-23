@@ -1,2 +1,2 @@
-dgdfgdfgdfg
-: console.log(this.args)
+: var pres = this.args.pres
+<%= pres.body_rendered %> 

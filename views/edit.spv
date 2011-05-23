@@ -1,0 +1,5 @@
+: var pres = this.args.pres
+
+: this.editor("/p/" + pres.slug + "/edit", pres.body)
+
+
