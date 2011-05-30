@@ -1,2 +1,5 @@
 : var pres = this.args.pres
-<%= pres.body_rendered %> 
+
+<div class="slides">
+	<% this.output(pres.body_rendered) %> 
+</div>
