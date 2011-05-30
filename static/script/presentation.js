@@ -29,17 +29,15 @@ define(["jquery"], function ($) {
 			});
 		});
 		
-		
 		$(window).keydown(function (e) {
 			var key = e.which;
 			
-			if (key == key_rightarrow) {
-				e.preventDefault();
+			if (key == key_rightarrow ||
+				key == key_spacebar) {
 				self.nextSlide(e);
 			}
 			
 			if (key == key_leftarrow) {
-				e.preventDefault();
 				self.previousSlide(e);
 			}
 			
