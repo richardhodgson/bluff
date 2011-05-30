@@ -1,0 +1,32 @@
+html, body {
+	height: 100%;
+}
+
+body, div, p {
+	padding: 0;
+	margin: 0;
+}
+
+.slide {
+	height: 100%;
+	border: 1px solid blue;
+}
+
+.slide .navigation {
+	height: 90%;
+	width: 10%;
+	float: right;
+	display: block;
+	border: 1px solid lime;
+	
+	text-align: right;
+}
+
+.navigation a {
+	position:relative;
+	top: 90%;
+}
+
+.slide p {
+	text-align: center;
+}

@@ -1,5 +1,8 @@
 : var pres = this.args.pres
 
-<div class="slides">
-	<% this.output(pres.body_rendered) %> 
-</div>
+
+<% this.output(pres.body_rendered) %> 
+
+<~method head>
+	<link rel="stylesheet" type="text/css" media="screen" href="/presentation.css"/>
+</~method>
