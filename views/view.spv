@@ -4,7 +4,7 @@
 <% this.output(pres.body_rendered) %> 
 
 <~method head>
-	<link rel="stylesheet" type="text/css" media="screen" href="/presentation.css"/>
+	<link rel="stylesheet" type="text/css" media="screen" href="/style/presentation.css"/>
 	<script>
 		require(
 			{baseUrl: "/"},
