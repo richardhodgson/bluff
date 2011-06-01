@@ -1,7 +1,19 @@
 <h1>Bluff</h1>
+<h2>Make presentations, fast.</h2>
 
 <p>
-	For making a presentation in a very short amount of time.
+	<em>Bluff</em> is for those of us who never prepare for a presentation until an hour before.
 </p>
 
-: this.editor("/new")
+<p>
+	With <em>Bluff</em>, simply write your presentation out quickly using markdown syntax and we'll make it look great.
+</p>
+
+<p>
+	Use <code>---</code> to add a new slide.
+</p>
+
+: this.editor(
+:     "/new",
+:     "this is the first slide\n\n---\n\nthis is the second slide"
+: )
