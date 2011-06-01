@@ -42,6 +42,11 @@ p {
 	margin:0 auto;
 }
 
+p a {
+	text-decoration: none;
+	padding: 4px 3px 2px 3px;
+}
+
 p em {
 	font-style: normal;
 }
@@ -50,7 +55,7 @@ form {
 	display: block;
 	text-align: right;
 	width: 500px;
-	margin: 0 auto;
+	margin: 0 auto 2em auto;
 }
 
 textarea {
@@ -69,6 +74,14 @@ input {
 
 code {
 	padding:0 3px;
+}
+
+.footer {
+	width: 100%;
+	padding-top: 2em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-size: 11px
 }
 
 /* try http://www.colourlovers.com/palette/1590463/No_Me_Mientas?widths=1 */
@@ -94,6 +107,11 @@ p em {
 	color: #fff;
 }
 
+p a {
+	background: #5C3E4D;
+	color: #ccc;
+}
+
 textarea {
 	background: #000;
 	color: #DE7B5F;
@@ -108,4 +126,10 @@ input {
 	background: #000;
 	border: none;
 	color: #E3BF20;
+}
+
+.footer {
+	background: none;
+	color: #aaa;
+	border-bottom: 12px solid #DE7B5F;
 }

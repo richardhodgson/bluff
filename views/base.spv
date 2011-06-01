@@ -14,6 +14,9 @@
         <!--div class="page" -->
 <% next(this) %>
         <!--/div -->
+        <p class="footer">
+        	Made with <a href="http://use.no.de">use.no.de</a> by <a href="http://twitter.com/richardhodgson">Richard Hodgson</a>
+        </p>
     </body>
 </html>
 
