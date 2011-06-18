@@ -11,12 +11,13 @@
 		<%  this.head() %>
     </head>
     <body>
-        <!--div class="page" -->
 <% next(this) %>
-        <!--/div -->
+        <~method footer>
         <p class="footer">
         	Made with <a href="http://use.no.de">use.no.de</a> by <a href="http://twitter.com/richardhodgson">Richard Hodgson</a>
         </p>
+        </~method>
+        <% this.footer() %>
     </body>
 </html>
 

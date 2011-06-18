@@ -12,3 +12,5 @@
 		);
 	</script>
 </~method>
+
+<~method footer></~method>
