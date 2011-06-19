@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-    	<~method pageTitle>Bluff</~method>
+    	<~method pageTitle>Pitch</~method>
         <title><% this.pageTitle() %></title>
         
         <script src="/script/vendor/require-jquery.js"></script>
