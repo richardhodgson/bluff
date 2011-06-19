@@ -3,6 +3,8 @@ define(["jquery"], function ($) {
 	function Controller () {		
 		this.view         = new View();
 		this.presentation = new Presentation();
+        
+        this.presentation.totalSlides = this.view.countSlides();
 		
 		this.attachListeners();
 		this.view.selectSlide(1);
@@ -11,9 +13,12 @@ define(["jquery"], function ($) {
 	Controller.prototype.attachListeners = function () {
 	
 		var self = this,
-		    key_rightarrow = 39,
-		    key_leftarrow  = 37,
-		    key_spacebar   = 32;
+            keys = {
+		        'rightarrow': 39,
+		        'leftarrow' : 37,
+		        'spacebar'  : 32,
+                'backspace' : 8 
+            };
 		
 		var nextNavigation = this.view.getNavElements('next');
 		nextNavigation.each(function (i) {
@@ -32,33 +37,45 @@ define(["jquery"], function ($) {
 		$(window).keydown(function (e) {
 			var key = e.which;
 			
-			if (key == key_rightarrow ||
-				key == key_spacebar) {
+			if (key == keys.rightarrow ||
+				key == keys.spacebar) {
 				self.nextSlide(e);
 			}
 			
-			if (key == key_leftarrow) {
+			if (key == keys.leftarrow ||
+                key == keys.backspace) {
 				self.previousSlide(e);
 			}
 			
 			//console.log(key);
 		});
+        
+        $('body').bind('click', function (e) {
+    		self.nextSlide(e)
+		});
 	}
 	
 	Controller.prototype.nextSlide = function (e) {
 		e.preventDefault();
+        if (this.presentation.currentSlide == this.presentation.totalSlides) {
+            return;
+        }
 		this.presentation.currentSlide++;
 		this.view.selectSlide(this.presentation.currentSlide);
 	}
 	
 	Controller.prototype.previousSlide = function (e) {
 		e.preventDefault();
-		this.presentation.currentSlide--;
+        if (this.presentation.currentSlide == 1) {   
+            return;
+        }
+        this.presentation.currentSlide--;
 		this.view.selectSlide(this.presentation.currentSlide);
 	}
 	
 	function Presentation () {
 		this.currentSlide = 1;
+        this.totalSlides = 0;
 	}
 	
 	function View () {
@@ -71,8 +88,10 @@ define(["jquery"], function ($) {
             self.verticallyCentreSlideContents();
         };
         
-        $(window).bind("resize", updatePositioning);
-        $(window).bind("scroll", updatePositioning);
+        $(window).bind("resize", function () {
+            updatePositioning();
+            self.resetSlidePosition();
+        });
         
         this.wrapSlideContents();
         updatePositioning();
@@ -88,21 +107,21 @@ define(["jquery"], function ($) {
 			throw new Error("not a known nav type");
 		}
 		return this.slides.find('.' + type + 'Slide');
-	}
+	};
 	
     /**
      * Updates the hash in the window's location
      */
 	View.prototype.selectSlide = function (number) {
 		window.location.hash = "slide" + number;
-	}
+	};
     
     /**
      * Sets the height for each slide to that of the window (viewport)
      */
     View.prototype.setSlideHeightFromWindow = function () {
         this.slides.height($(window).height());
-    }
+    };
     
     /**
      * Wraps contents of each slide in a div
@@ -125,7 +144,7 @@ define(["jquery"], function ($) {
                 'width': '100%'
             });
         });
-    }
+    };
     
     /**
      * Ensures the contents of the slide are vertically centred.
@@ -140,8 +159,24 @@ define(["jquery"], function ($) {
                 (slide.height() - contentsGroup.height()) / 2
             );
         });
-    }
-	
+    };
+    
+    /**
+     * Returns the number of slides found
+     * @return Number
+     */
+    View.prototype.countSlides = function () {
+        return $('.slide').length;
+    };
+    
+    /**
+     * Resets the slide postition.
+     * Useful if the window is being resized.
+     * Updates window.location.has with the current value
+     */
+    View.prototype.resetSlidePosition  = function () {
+        window.location.hash = window.location.hash;
+    };
 	
 	function setup () {
 		new Controller();
