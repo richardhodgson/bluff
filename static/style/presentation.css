@@ -2,7 +2,7 @@ html, body {
 	height: 100%;
 }
 
-body, div, p {
+body, div, p, pre {
 	padding: 0;
 	margin: 0;
 }
@@ -34,7 +34,8 @@ body, div, p {
     padding: 1% 0;
 }
 
-.slide p {
+.slide p,
+.slide pre {
 	text-align: center;
 	float: left;
 	width: 80%;
@@ -44,7 +45,17 @@ body, div, p {
 	font-size: 48px;
 }
 
-.slide p strong {
+.slide pre {
+    font-size: 40px;
+}
+
+.slide code {
+    display: block;
+    text-align:left;
+}
+
+.slide p strong,
+.slide pre strong {
 	font-weight: normal;
 }
 
@@ -54,10 +65,12 @@ body, div, p {
 	border-bottom: 12px solid #555;
 }
 
-.slide p {
+.slide p,
+.slide pre{
 	color: #fff;
 }
 
-.slide p strong {
+.slide p strong,
+.slide pre strong {
 	color: #DEAF0D;
 }
