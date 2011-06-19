@@ -17,3 +17,7 @@
 :     "/new",
 :     "this is the first slide\n\n---\n\nthis is the second slide"
 : )
+
+<~init>
+    this.addBodyClass('home');
+</~init>

@@ -10,7 +10,7 @@
 		</~method>
 		<%  this.head() %>
     </head>
-    <body>
+    <body<% this.output((this.bodyClasses.length) ? ' class="'+ this.bodyClasses.join(" ") +'"' : '') %>>
 <% next(this) %>
         <~method footer>
         <p class="footer">
@@ -27,3 +27,11 @@
 		<input type="submit" value="Save" />
 	</form>
 </~method>
+
+<~method addBodyClass(classname)><%
+    this.bodyClasses.push(classname);
+%></~method>
+
+<~init>
+    this.bodyClasses = [];
+</~init>
