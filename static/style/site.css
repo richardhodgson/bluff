@@ -62,7 +62,12 @@ textarea {
 	font-family: "courier new", courier, sans-serif;
 	font-size: 20px;
 	width: 480px;
+    height: 24em;
 	padding: 4px;
+}
+
+.home textarea {
+    height: 12em;
 }
 
 input {
