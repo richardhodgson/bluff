@@ -18,6 +18,7 @@ h1 {
 	letter-spacing: -9px;
 
 	margin-top: 25px;
+    margin-left: -14px;
 }
 
 h2 {
@@ -75,6 +76,12 @@ input {
 	font-size: 48px;
 	padding: 8px 8px 2px 8px;
 	margin: 0.5em 0;
+}
+
+.savebutton {
+    width: 130px;
+    height: 60px;
+    _padding: 0;
 }
 
 code {

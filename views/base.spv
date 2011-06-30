@@ -24,7 +24,7 @@
 <~method editor(action, body)>
 	<form action="<%= action %>" method="post">
 		<textarea name="body" id="body" rows="20" cols="60"><%= body %></textarea>
-		<input type="submit" value="Save" />
+		<input class="savebutton" type="submit" value="Save" />
 	</form>
 </~method>
 
