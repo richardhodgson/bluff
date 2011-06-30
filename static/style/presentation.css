@@ -1,48 +1,48 @@
 html, body {
-	height: 100%;
+    height: 100%;
 }
 
 body, div, p, pre {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .slide {
-	height: 100%;
+    height: 100%;
 }
 
 .slide .navigation {
-	width: 100%;
-	display: block;
-	
-	margin: 5% 0 0 0;
+    width: 100%;
+    display: block;
+    
+    margin: 5% 0 0 0;
 
 }
 
 .navigation a {
-	display: block;
-	width: 50%;
-	text-align: center;
-	float: right;
-	
-	text-decoration:none;
-	color: #666;
+    display: block;
+    width: 50%;
+    text-align: center;
+    float: right;
+    
+    text-decoration:none;
+    color: #666;
     font-size:13px;
     text-transform: uppercase;
-   	font-family:"Arial", arial, sans-serif;
+       font-family:"Arial", arial, sans-serif;
     
     padding: 1% 0;
 }
 
 .slide p,
 .slide pre {
-	text-align: center;
-	float: left;
-	width: 80%;
-	margin: 15% 10% 0 10%;
-	
-	font-family:"Times New Roman", times, serif;
-	font-size: 48px;
+    text-align: center;
+    float: left;
+    width: 80%;
+    margin: 15% 10% 0 10%;
+    
+    font-family:"Times New Roman", times, serif;
+    font-size: 48px;
 }
 
 .slide pre {
@@ -56,21 +56,21 @@ body, div, p, pre {
 
 .slide p strong,
 .slide pre strong {
-	font-weight: normal;
+    font-weight: normal;
 }
 
 /* colours */
 .slide {
-	background: #444;
-	border-bottom: 12px solid #555;
+    background: #444;
+    border-bottom: 12px solid #555;
 }
 
 .slide p,
 .slide pre{
-	color: #fff;
+    color: #fff;
 }
 
 .slide p strong,
 .slide pre strong {
-	color: #DEAF0D;
+    color: #DEAF0D;
 }

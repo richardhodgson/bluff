@@ -1,7 +1,7 @@
 : var pres = this.args.pres
 
 <p>
-	Editing <a href="/p/<%= pres.slug %>">/p/<%= pres.slug %></a>.
+    Editing <a href="/p/<%= pres.slug %>">/p/<%= pres.slug %></a>.
 </p>
 
 : this.editor("/p/" + pres.slug + "/edit", pres.body)

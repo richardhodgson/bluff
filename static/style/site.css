@@ -1,70 +1,70 @@
 html, body {
-	height: 100%;
+    height: 100%;
 }
 
 body, div, h1, h2, p, textarea, input {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-	text-align:center;
+    text-align:center;
 }
 
 h1 {
-	font-size: 150px;
-	font-family: times;
-	line-height: 1;
-	letter-spacing: -9px;
+    font-size: 150px;
+    font-family: times;
+    line-height: 1;
+    letter-spacing: -9px;
 
-	margin-top: 25px;
+    margin-top: 25px;
     margin-left: -14px;
 }
 
 h2 {
 
-	font-family: helvetica, arial, sans-serif;
-	font-size: 36px;
-	font-weight:normal;
-	letter-spacing: -1px;
-	
-	position: relative;
-	bottom: 20px;
+    font-family: helvetica, arial, sans-serif;
+    font-size: 36px;
+    font-weight:normal;
+    letter-spacing: -1px;
+    
+    position: relative;
+    bottom: 20px;
 }
 
 p {
 
-	font-family: helvetica, arial, sans-serif;
-	font-size: 20px;
-	line-height: 1.4;
-	
-	padding: 1em 0;
-	width: 500px;
-	margin:0 auto;
+    font-family: helvetica, arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+    
+    padding: 1em 0;
+    width: 500px;
+    margin:0 auto;
 }
 
 p a {
-	text-decoration: none;
-	padding: 4px 3px 2px 3px;
+    text-decoration: none;
+    padding: 4px 3px 2px 3px;
 }
 
 p em {
-	font-style: normal;
+    font-style: normal;
 }
 
 form {
-	display: block;
-	text-align: right;
-	width: 500px;
-	margin: 0 auto 2em auto;
+    display: block;
+    text-align: right;
+    width: 500px;
+    margin: 0 auto 2em auto;
 }
 
 textarea {
-	font-family: "courier new", courier, sans-serif;
-	font-size: 20px;
-	width: 480px;
+    font-family: "courier new", courier, sans-serif;
+    font-size: 20px;
+    width: 480px;
     height: 24em;
-	padding: 4px;
+    padding: 4px;
 }
 
 .home textarea {
@@ -72,10 +72,10 @@ textarea {
 }
 
 input {
-	font-family: helvetica, arial, sans-serif;
-	font-size: 48px;
-	padding: 8px 8px 2px 8px;
-	margin: 0.5em 0;
+    font-family: helvetica, arial, sans-serif;
+    font-size: 48px;
+    padding: 8px 8px 2px 8px;
+    margin: 0.5em 0;
 }
 
 .savebutton {
@@ -85,63 +85,63 @@ input {
 }
 
 code {
-	padding:0 3px;
+    padding:0 3px;
 }
 
 .footer {
-	width: 100%;
-	padding-top: 2em;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	font-size: 11px
+    width: 100%;
+    padding-top: 2em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 11px
 }
 
 /* try http://www.colourlovers.com/palette/1590463/No_Me_Mientas?widths=1 */
 body {
-	background: #33292E;
-	border-top: 8px solid #5C3E4D;
+    background: #33292E;
+    border-top: 8px solid #5C3E4D;
 }
 
 h1 {
-	color: #F36C13;
-	color: #DE7B5F;
+    color: #F36C13;
+    color: #DE7B5F;
 }
 
 h2 {
-	color: #E3BF20;
+    color: #E3BF20;
 }
 
 p {
-	color: #ccc;
+    color: #ccc;
 }
 
 p em {
-	color: #fff;
+    color: #fff;
 }
 
 p a {
-	background: #5C3E4D;
-	color: #ccc;
+    background: #5C3E4D;
+    color: #ccc;
 }
 
 textarea {
-	background: #000;
-	color: #DE7B5F;
-	border: 6px solid #5C3E4D;
+    background: #000;
+    color: #DE7B5F;
+    border: 6px solid #5C3E4D;
 }
 
 code {
-	background: #5C3E4D;
+    background: #5C3E4D;
 }
 
 input {
-	background: #000;
-	border: none;
-	color: #E3BF20;
+    background: #000;
+    border: none;
+    color: #E3BF20;
 }
 
 .footer {
-	background: none;
-	color: #aaa;
-	border-bottom: 12px solid #DE7B5F;
+    background: none;
+    color: #aaa;
+    border-bottom: 12px solid #DE7B5F;
 }

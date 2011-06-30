@@ -29,27 +29,27 @@ dev_server = {
         sys.debug('DEVSERVER: Starting server');
         self.watchFiles();
         
-		var scriptName = process.ARGV[2] || 'server.js';
+        var scriptName = process.ARGV[2] || 'server.js';
 
         this.process = child_process.spawn(process.ARGV[0], [scriptName]);
 
         this.process.stdout.addListener('data', function (data) {
-		process.stdout.write(data);
-	    });
+        process.stdout.write(data);
+        });
 
         this.process.stderr.addListener('data', function (data) {
-		sys.print(data);
-	    });
+        sys.print(data);
+        });
 
         this.process.addListener('exit', function (code) {
-		sys.debug('DEVSERVER: Child process exited: ' + code);
-		this.process = null;
-		if (self.restarting) {
-		    self.restarting = true;
-		    self.unwatchFiles();
-		    self.start();
-		}
-	    });
+        sys.debug('DEVSERVER: Child process exited: ' + code);
+        this.process = null;
+        if (self.restarting) {
+            self.restarting = true;
+            self.unwatchFiles();
+            self.start();
+        }
+        });
 
     },
 
@@ -57,24 +57,24 @@ dev_server = {
         var self = this;
 
         child_process.exec('find . | egrep "\.(js|spv)"', function(error, stdout, stderr) {
-		var files = stdout.trim().split("\n");
+        var files = stdout.trim().split("\n");
 
-		files.forEach(function(file) {
-			self.files.push(file);
-			fs.watchFile(file, {interval : 500}, function(curr, prev) {
-				if (curr.mtime.valueOf() != prev.mtime.valueOf() || curr.ctime.valueOf() != prev.ctime.valueOf()) {
-				    sys.debug('DEVSERVER: Restarting because of changed file at ' + file);
-				    dev_server.restart();
-				}
-			    });
-		    });
-	    });
+        files.forEach(function(file) {
+            self.files.push(file);
+            fs.watchFile(file, {interval : 500}, function(curr, prev) {
+                if (curr.mtime.valueOf() != prev.mtime.valueOf() || curr.ctime.valueOf() != prev.ctime.valueOf()) {
+                    sys.debug('DEVSERVER: Restarting because of changed file at ' + file);
+                    dev_server.restart();
+                }
+                });
+            });
+        });
     },
 
     "unwatchFiles": function() {
         this.files.forEach(function(file) {
-		fs.unwatchFile(file);
-	    });
+        fs.unwatchFile(file);
+        });
         this.files = [];
     }
 }

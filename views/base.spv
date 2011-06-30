@@ -1,20 +1,20 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-    	<~method pageTitle>Bluff</~method>
+        <~method pageTitle>Bluff</~method>
         <title><% this.pageTitle() %></title>
         
         <script src="/script/vendor/require-jquery.js"></script>
         <~method head>
-			<link rel="stylesheet" type="text/css" media="screen" href="/style/site.css"/>
-		</~method>
-		<%  this.head() %>
+            <link rel="stylesheet" type="text/css" media="screen" href="/style/site.css"/>
+        </~method>
+        <%  this.head() %>
     </head>
     <body<% this.output((this.bodyClasses.length) ? ' class="'+ this.bodyClasses.join(" ") +'"' : '') %>>
 <% next(this) %>
         <~method footer>
         <p class="footer">
-        	Made with <a href="http://use.no.de">use.no.de</a> by <a href="http://twitter.com/richardhodgson">Richard Hodgson</a>
+            Made with <a href="http://use.no.de">use.no.de</a> by <a href="http://twitter.com/richardhodgson">Richard Hodgson</a>
         </p>
         </~method>
         <% this.footer() %>
@@ -22,10 +22,10 @@
 </html>
 
 <~method editor(action, body)>
-	<form action="<%= action %>" method="post">
-		<textarea name="body" id="body" rows="20" cols="60"><%= body %></textarea>
-		<input class="savebutton" type="submit" value="Save" />
-	</form>
+    <form action="<%= action %>" method="post">
+        <textarea name="body" id="body" rows="20" cols="60"><%= body %></textarea>
+        <input class="savebutton" type="submit" value="Save" />
+    </form>
 </~method>
 
 <~method addBodyClass(classname)><%
