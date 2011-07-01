@@ -3,6 +3,7 @@
     <head>
         <~method pageTitle>Bluff</~method>
         <title><% this.pageTitle() %></title>
+        <meta name="viewport" content="width = 504" />
         
         <script src="/script/vendor/require-jquery.js"></script>
         <~method head>
