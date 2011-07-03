@@ -7,4 +7,5 @@ Hide window scrollbar
 Edit link when viewing presentation (a.l.a jsbin?)
 Minify static assets
 Packages json with correct deps
-Allow authors to 'lock' a presentation with a secret.
+Allow authors to 'lock' a presentation with a secret phrase.
+Allow someone to clone a presentation (without password)
