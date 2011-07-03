@@ -51,7 +51,10 @@ define(["jquery"], function ($) {
         });
         
         $('body').bind('click', function (e) {
-            self.nextSlide(e)
+            var target = $(e.target);
+            if (! target.hasClass('editLink')) {
+                self.nextSlide(e);
+            }
         });
     }
     
@@ -92,6 +95,8 @@ define(["jquery"], function ($) {
             updatePositioning();
             self.resetSlidePosition();
         });
+        
+        this.setUpEditLink();
         
         this.wrapSlideContents();
         updatePositioning();
@@ -174,8 +179,48 @@ define(["jquery"], function ($) {
      * Useful if the window is being resized.
      * Updates window.location.has with the current value
      */
-    View.prototype.resetSlidePosition  = function () {
+    View.prototype.resetSlidePosition = function () {
         window.location.hash = window.location.hash;
+    };
+    
+    View.prototype.showEditLink = function () {
+        $('.editLink').fadeIn();
+    }
+    
+    View.prototype.hideEditLink = function () {
+        $('.editLink').fadeOut();
+    }
+    
+    /**
+     * Adds a listener to the body on mouseover.
+     * Listener will show the edit link when the mouse moves
+     * and hide it after a second.
+     */
+    View.prototype.setUpEditLink = function () {
+            
+        var editLinkShown   = false,
+            editLinkTimeout = null,
+            view            = this;
+        
+        var fadeOutEditLink = function () {
+            view.hideEditLink();
+            editLinkTimeout = null;
+            editLinkShown = false;
+        };
+        
+        $('body').bind('mousemove', function (e) {
+            
+            if (editLinkShown) {
+                clearTimeout(editLinkTimeout);
+                editLinkTimeout = setTimeout(fadeOutEditLink, 1000);
+            }
+            else {
+                editLinkShown = true;
+                view.showEditLink();
+                
+                editLinkTimeout = setTimeout(fadeOutEditLink, 1000);
+            }
+        });
     };
     
     function setup () {

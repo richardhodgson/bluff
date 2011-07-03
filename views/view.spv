@@ -1,5 +1,8 @@
 : var pres = this.args.pres
 
+<p class="edit">
+    <a class="editLink" href="/p/<%= pres.slug %>/edit">Edit<span> this presentation</span></a>
+</p>
 
 <% this.output(pres.body_rendered) %> 
 
