@@ -208,6 +208,8 @@ define(["jquery"], function ($) {
             editLinkShown = false;
         };
         
+        view.hideEditLink();
+        
         $('body').bind('mousemove', function (e) {
             
             if (editLinkShown) {
