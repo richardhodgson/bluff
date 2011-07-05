@@ -24,12 +24,12 @@
 
 <~method editor(action, body, message, showPassword)>
 : if (message) {
-        <p><%= message %></p>
+        <p class="message"><%= message %></p>
 : }
     <form action="<%= action %>" method="post">
         <textarea name="body" id="body" rows="20" cols="60"><%= body %></textarea>
+        <input class="savebutton" type="submit" value="Save" />
 : this.editorSlot();
-    <input class="savebutton" type="submit" value="Save" />
     </form>
 </~method>
 

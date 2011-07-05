@@ -9,6 +9,7 @@ body, div, h1, h2, p, textarea, input {
 
 body {
     text-align:center;
+    padding-top: 25px;
 }
 
 h1 {
@@ -17,7 +18,6 @@ h1 {
     line-height: 1;
     letter-spacing: -9px;
 
-    margin-top: 25px;
     margin-left: -14px;
 }
 
@@ -28,11 +28,15 @@ h2 {
     font-weight:normal;
     letter-spacing: -1px;
     
+}
+
+.home h2 {
     position: relative;
     bottom: 20px;
 }
 
-p {
+p,
+label {
 
     font-family: helvetica, arial, sans-serif;
     font-size: 20px;
@@ -41,8 +45,10 @@ p {
     padding: 1em 0;
     width: 500px;
     margin:0 auto;
+    text-align: left;
 }
 
+h2 a,
 p a {
     text-decoration: none;
     padding: 4px 3px 2px 3px;
@@ -59,12 +65,25 @@ form {
     margin: 0 auto 2em auto;
 }
 
-textarea {
+textarea,
+input.textbox {
     font-family: "courier new", courier, sans-serif;
     font-size: 20px;
     width: 480px;
-    height: 24em;
     padding: 4px;
+}
+
+textarea {
+    height: 24em;
+}
+
+label {
+    display: block;
+    padding: 1em 0 0 0;
+}
+
+label span {
+    display:block;
 }
 
 .home textarea {
@@ -90,12 +109,23 @@ code {
     padding:0 3px;
 }
 
+.message,
+label span,
 .footer {
-    width: 100%;
-    padding-top: 2em;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 11px;    
+}
+
+.message,
+.footer {
+    padding-top: 2em;
+
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
 }
 
 /* try http://www.colourlovers.com/palette/1590463/No_Me_Mientas?widths=1 */
@@ -113,7 +143,8 @@ h2 {
     color: #E3BF20;
 }
 
-p {
+p,
+label {
     color: #ccc;
 }
 
@@ -121,12 +152,14 @@ p em {
     color: #fff;
 }
 
+h2 a,
 p a {
     background: #5C3E4D;
     color: #ccc;
 }
 
-textarea {
+textarea,
+input.textbox {
     background: #000;
     color: #DE7B5F;
     border: 6px solid #5C3E4D;
@@ -142,8 +175,12 @@ input {
     color: #E3BF20;
 }
 
+.message,
+.footer {
+    color: #aaa;
+}
+
 .footer {
     background: none;
-    color: #aaa;
     border-bottom: 12px solid #DE7B5F;
 }
