@@ -1,9 +1,10 @@
-: var pres = this.args.pres
+: var pres    = this.args.pres,
+:     message = this.args.message || null;
 
 <p>
     Editing <a href="/p/<%= pres.slug %>">/p/<%= pres.slug %></a>.
 </p>
 
-: this.editor("/p/" + pres.slug + "/edit", pres.body)
+: this.editor("/p/" + pres.slug + "/edit", pres.body, message, true)
 
 
