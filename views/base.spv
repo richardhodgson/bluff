@@ -28,13 +28,12 @@
 : }
     <form action="<%= action %>" method="post">
         <textarea name="body" id="body" rows="20" cols="60"><%= body %></textarea>
-: if (showPassword) {
-        <label for="password">Passphrase<!-- put a span in here with a hint or something --></label>
-        <input type="password" name="password" id="password" value="" />
-: }
-        <input class="savebutton" type="submit" value="Save" />
+: this.editorSlot();
+    <input class="savebutton" type="submit" value="Save" />
     </form>
 </~method>
+
+<~method editorSlot></~method>
 
 <~method addBodyClass(classname)><%
     this.bodyClasses.push(classname);

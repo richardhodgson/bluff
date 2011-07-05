@@ -5,6 +5,14 @@
     Editing <a href="/p/<%= pres.slug %>">/p/<%= pres.slug %></a>.
 </p>
 
-: this.editor("/p/" + pres.slug + "/edit", pres.body, message, true)
+: this.editor(
+:     "/p/" + pres.slug + "/edit",
+:     pres.body,
+:     message
+: )
 
-
+<~method editorSlot>
+:       var submitted = this.args.pres.submittedPassword || '';
+        <label for="password">Passphrase<!-- put a span in here with a hint or something --></label>
+        <input type="password" name="password" id="password" value="<%= submitted %>" />
+</~method>
