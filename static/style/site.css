@@ -79,11 +79,21 @@ textarea {
 
 label {
     display: block;
-    padding: 1em 0 0 0;
+    padding: 6px 4px 2px 4px;
+    margin: 0.5em 0 0 0;
+    float: left;
+    width: 112px;
+    line-height: 1.2em;
+    text-align: right;
 }
 
 label span {
-    display:block;
+    display: block;
+    position: absolute;
+    margin: 12px 0 0 121px;
+    width: 360px;
+    line-height: 1.5em;
+    text-align: left;
 }
 
 .home textarea {
@@ -97,9 +107,16 @@ input {
     margin: 0.5em 0;
 }
 
+input.textbox {
+    width: 360px;
+    border-left: none;
+}
+
 .savebutton {
+    float: right;
     width: 130px;
     height: 60px;
+    margin-top: 1em;
     _padding: 0;
     -webkit-border-radius: 0px;
     -webkit-appearance: none;
@@ -126,6 +143,7 @@ label span,
 .footer {
     width: 100%;
     text-align: center;
+    clear: both;
 }
 
 /* try http://www.colourlovers.com/palette/1590463/No_Me_Mientas?widths=1 */
@@ -139,12 +157,12 @@ h1 {
     color: #DE7B5F;
 }
 
-h2 {
+h2,
+label {
     color: #E3BF20;
 }
 
-p,
-label {
+p {
     color: #ccc;
 }
 
@@ -159,10 +177,23 @@ p a {
 }
 
 textarea,
+label,
 input.textbox {
     background: #000;
-    color: #DE7B5F;
     border: 6px solid #5C3E4D;
+}
+
+textarea,
+input.textbox {
+    color: #DE7B5F;
+}
+
+input.textbox {
+    border-left: none;
+}
+
+label {
+    border-right: none;
 }
 
 code {
@@ -176,6 +207,7 @@ input {
 }
 
 .message,
+label span,
 .footer {
     color: #aaa;
 }

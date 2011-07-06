@@ -21,6 +21,6 @@
 :           var message = 'Provide the passphrase to save changes.';
 :       }
 
-        <label for="password">Passphrase <span><%= message %></span></label>
+        <label for="password">Password <span><%= message %></span></label>
         <input class="textbox" type="password" name="password" id="password" value="<%= submitted %>" />
 </~method>
