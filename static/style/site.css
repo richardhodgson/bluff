@@ -71,6 +71,7 @@ input.textbox {
     font-size: 20px;
     width: 480px;
     padding: 4px;
+    height: 24px;
 }
 
 textarea {
