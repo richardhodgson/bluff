@@ -28,7 +28,7 @@ h2 {
     font-weight:normal;
     letter-spacing: -1px;
     
-    margin-bottom: 1em;
+    margin-bottom: 30px;
 }
 
 .home h2 {
@@ -58,6 +58,11 @@ h2 a,
 p a {
     text-decoration: none;
     padding: 4px 3px 2px 3px;
+}
+
+h2 a {
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 p em {
@@ -149,7 +154,6 @@ label span,
     font-size: 11px;    
 }
 
-.message,
 .footer {
     padding-top: 2em;
 
