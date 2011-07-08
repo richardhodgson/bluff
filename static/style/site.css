@@ -86,6 +86,7 @@ label {
     width: 112px;
     line-height: 1.2em;
     text-align: right;
+    letter-spacing: 1px;
 }
 
 label span {
@@ -158,8 +159,7 @@ h1 {
     color: #DE7B5F;
 }
 
-h2,
-label {
+h2 {
     color: #E3BF20;
 }
 
@@ -178,7 +178,6 @@ p a {
 }
 
 textarea,
-label,
 input.textbox {
     background: #000;
     border: 6px solid #5C3E4D;
@@ -194,6 +193,8 @@ input.textbox {
 }
 
 label {
+    background: #5C3E4D;
+    border: 6px solid #5C3E4D;
     border-right: none;
 }
 
@@ -208,7 +209,7 @@ input {
 }
 
 .message,
-label span,
+label,
 .footer {
     color: #aaa;
 }
