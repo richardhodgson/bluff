@@ -9,7 +9,7 @@ body, div, h1, h2, p, textarea, input {
 
 body {
     text-align:center;
-    padding-top: 25px;
+    padding-top: 18px;
 }
 
 h1 {
@@ -28,11 +28,18 @@ h2 {
     font-weight:normal;
     letter-spacing: -1px;
     
+    margin-bottom: 1em;
 }
 
 .home h2 {
     position: relative;
     bottom: 20px;
+    
+    margin-bottom: 0;
+}
+
+p {
+    text-align: center;
 }
 
 p,
@@ -45,7 +52,6 @@ label {
     padding: 1em 0;
     width: 500px;
     margin:0 auto;
-    text-align: left;
 }
 
 h2 a,
@@ -114,14 +120,21 @@ input.textbox {
     border-left: none;
 }
 
+/* bloody Chrome & webkit, cripple Firefox for consistency */
+input[type="submit"]::-moz-focus-inner {
+    padding: 6px 0 0 0;
+}
+
 .savebutton {
+    padding: 0 0 4px 0;
     float: right;
     width: 130px;
-    height: 60px;
+    height: 56px;
     margin-top: 1em;
     _padding: 0;
     -webkit-border-radius: 0px;
     -webkit-appearance: none;
+    border: 1px solid #000;
 }
 
 code {
@@ -144,14 +157,13 @@ label span,
 
 .footer {
     width: 100%;
-    text-align: center;
     clear: both;
 }
 
 /* try http://www.colourlovers.com/palette/1590463/No_Me_Mientas?widths=1 */
 body {
     background: #33292E;
-    border-top: 8px solid #5C3E4D;
+    border-top: 14px solid #5C3E4D;
 }
 
 h1 {
@@ -206,6 +218,10 @@ input {
     background: #000;
     border: none;
     color: #E3BF20;
+}
+
+.savebutton {
+    
 }
 
 .message,
