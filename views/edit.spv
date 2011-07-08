@@ -1,9 +1,26 @@
-: var pres = this.args.pres
+: var pres    = this.args.pres,
+:     message = this.args.message || null;
 
-<p>
+<h2>
     Editing <a href="/p/<%= pres.slug %>">/p/<%= pres.slug %></a>.
-</p>
+</h2>
 
-: this.editor("/p/" + pres.slug + "/edit", pres.body)
+: this.editor(
+:     "/p/" + pres.slug + "/edit",
+:     pres.body,
+:     message
+: )
 
+<~method editorSlot>
+:       var submitted = this.args.pres.submittedPassword || '';
 
+:       if (! this.args.pres.password) {
+:           var message = 'Add a passphrase to control editing of this presentation';
+:       }
+:       else {
+:           var message = 'Provide the passphrase to save changes.';
+:       }
+
+        <label for="password">Password <span><%= message %></span></label>
+        <input class="textbox" type="password" name="password" id="password" value="<%= submitted %>" />
+</~method>

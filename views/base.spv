@@ -22,12 +22,18 @@
     </body>
 </html>
 
-<~method editor(action, body)>
+<~method editor(action, body, message, showPassword)>
+: if (message) {
+        <p class="message"><%= message %></p>
+: }
     <form action="<%= action %>" method="post">
         <textarea name="body" id="body" rows="20" cols="60"><%= body %></textarea>
+: this.editorSlot();
         <input class="savebutton" type="submit" value="Save" />
     </form>
 </~method>
+
+<~method editorSlot></~method>
 
 <~method addBodyClass(classname)><%
     this.bodyClasses.push(classname);

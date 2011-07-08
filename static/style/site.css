@@ -9,6 +9,7 @@ body, div, h1, h2, p, textarea, input {
 
 body {
     text-align:center;
+    padding-top: 18px;
 }
 
 h1 {
@@ -17,7 +18,6 @@ h1 {
     line-height: 1;
     letter-spacing: -9px;
 
-    margin-top: 25px;
     margin-left: -14px;
 }
 
@@ -28,11 +28,22 @@ h2 {
     font-weight:normal;
     letter-spacing: -1px;
     
+    margin-bottom: 30px;
+}
+
+.home h2 {
     position: relative;
     bottom: 20px;
+    
+    margin-bottom: 0;
 }
 
 p {
+    text-align: center;
+}
+
+p,
+label {
 
     font-family: helvetica, arial, sans-serif;
     font-size: 20px;
@@ -43,9 +54,15 @@ p {
     margin:0 auto;
 }
 
+h2 a,
 p a {
     text-decoration: none;
     padding: 4px 3px 2px 3px;
+}
+
+h2 a {
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 p em {
@@ -59,12 +76,37 @@ form {
     margin: 0 auto 2em auto;
 }
 
-textarea {
+textarea,
+input.textbox {
     font-family: "courier new", courier, sans-serif;
     font-size: 20px;
     width: 480px;
-    height: 24em;
     padding: 4px;
+    height: 24px;
+}
+
+textarea {
+    height: 24em;
+}
+
+label {
+    display: block;
+    padding: 6px 4px 2px 4px;
+    margin: 0.5em 0 0 0;
+    float: left;
+    width: 112px;
+    line-height: 1.2em;
+    text-align: right;
+    letter-spacing: 1px;
+}
+
+label span {
+    display: block;
+    position: absolute;
+    margin: 12px 0 0 121px;
+    width: 360px;
+    line-height: 1.5em;
+    text-align: left;
 }
 
 .home textarea {
@@ -78,30 +120,54 @@ input {
     margin: 0.5em 0;
 }
 
+input.textbox {
+    width: 360px;
+    border-left: none;
+}
+
+/* bloody Chrome & webkit, cripple Firefox for consistency */
+input[type="submit"]::-moz-focus-inner {
+    padding: 6px 0 0 0;
+}
+
 .savebutton {
+    padding: 0 0 4px 0;
+    float: right;
     width: 130px;
-    height: 60px;
+    height: 56px;
+    margin-top: 1em;
     _padding: 0;
     -webkit-border-radius: 0px;
     -webkit-appearance: none;
+    border: 1px solid #000;
 }
 
 code {
     padding:0 3px;
 }
 
+.message,
+label span,
 .footer {
-    width: 100%;
-    padding-top: 2em;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 11px;    
+}
+
+.footer {
+    padding-top: 2em;
+
+}
+
+.footer {
+    width: 100%;
+    clear: both;
 }
 
 /* try http://www.colourlovers.com/palette/1590463/No_Me_Mientas?widths=1 */
 body {
     background: #33292E;
-    border-top: 8px solid #5C3E4D;
+    border-top: 14px solid #5C3E4D;
 }
 
 h1 {
@@ -121,15 +187,31 @@ p em {
     color: #fff;
 }
 
+h2 a,
 p a {
     background: #5C3E4D;
     color: #ccc;
 }
 
-textarea {
+textarea,
+input.textbox {
     background: #000;
-    color: #DE7B5F;
     border: 6px solid #5C3E4D;
+}
+
+textarea,
+input.textbox {
+    color: #DE7B5F;
+}
+
+input.textbox {
+    border-left: none;
+}
+
+label {
+    background: #5C3E4D;
+    border: 6px solid #5C3E4D;
+    border-right: none;
 }
 
 code {
@@ -142,8 +224,17 @@ input {
     color: #E3BF20;
 }
 
+.savebutton {
+    
+}
+
+.message,
+label,
+.footer {
+    color: #aaa;
+}
+
 .footer {
     background: none;
-    color: #aaa;
     border-bottom: 12px solid #DE7B5F;
 }
