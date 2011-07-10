@@ -39,7 +39,7 @@ h2 {
 }
 
 p {
-    text-align: center;
+    
 }
 
 p,
@@ -52,6 +52,7 @@ label {
     padding: 1em 0;
     width: 500px;
     margin:0 auto;
+    text-align: center;
 }
 
 h2 a,
@@ -96,7 +97,6 @@ label {
     float: left;
     width: 112px;
     line-height: 1.2em;
-    text-align: right;
     letter-spacing: 1px;
 }
 
