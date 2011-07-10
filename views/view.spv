@@ -8,6 +8,7 @@
 
 <~method head>
     <link rel="stylesheet" type="text/css" media="screen" href="/style/presentation.css"/>
+    <script src="/script/vendor/require-jquery.js"></script>
     <script>
         require(
             {baseUrl: "/"},
