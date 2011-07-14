@@ -63,14 +63,19 @@ body, div, p, pre {
     font-weight: normal;
 }
 
-.editLink {
-    display:block;
+.actions {
+    
     position: fixed;
     top: 0;
     right: 0;
-    width: 30px;
+    width: 100%;
     overflow: hidden;
-    padding: 4px 2px 4px 4px;
+    font-size:11px;
+}
+
+.actions a {
+    float:right;
+    padding: 4px 6px 4px 6px;
     
     text-decoration:none;
     font-size:11px;
@@ -79,7 +84,7 @@ body, div, p, pre {
     text-align: center;
 }
 
-.editLink span {
+.actions a span {
     position: absolute;
     left: 0px;
     width: 0px;
@@ -102,7 +107,7 @@ body, div, p, pre {
     color: #DEAF0D;
 }
 
-.editLink {
+.actions a {
     background: #333;
-    color: #eee;
+    color: #ddd;
 }

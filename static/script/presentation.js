@@ -51,8 +51,9 @@ define(["jquery"], function ($) {
         });
         
         $('body').bind('click', function (e) {
-            var target = $(e.target);
-            if (! target.hasClass('editLink')) {
+            var target = $(e.target).parent();
+            
+            if (! target.hasClass('actions')) {
                 self.nextSlide(e);
             }
         });
@@ -96,7 +97,7 @@ define(["jquery"], function ($) {
             self.resetSlidePosition();
         });
         
-        this.setUpEditLink();
+        this.setUpActions();
         
         this.wrapSlideContents();
         updatePositioning();
@@ -183,44 +184,44 @@ define(["jquery"], function ($) {
         window.location.hash = window.location.hash;
     };
     
-    View.prototype.showEditLink = function () {
-        $('.editLink').fadeIn();
+    View.prototype.showActions = function () {
+        $('.actions').fadeIn();
     }
     
-    View.prototype.hideEditLink = function () {
-        $('.editLink').fadeOut();
+    View.prototype.hideActions = function () {
+        $('.actions').fadeOut();
     }
     
     /**
      * Adds a listener to the body on mouseover.
-     * Listener will show the edit link when the mouse moves
+     * Listener will show the actions links when the mouse moves
      * and hide it after a second.
      */
-    View.prototype.setUpEditLink = function () {
+    View.prototype.setUpActions = function () {
             
-        var editLinkShown   = false,
-            editLinkTimeout = null,
+        var actionsShown   = false,
+            actionsTimeout = null,
             view            = this;
         
-        var fadeOutEditLink = function () {
-            view.hideEditLink();
-            editLinkTimeout = null;
-            editLinkShown = false;
+        var fadeOutActions = function () {
+            view.hideActions();
+            actionsTimeout = null;
+            actionsShown = false;
         };
         
-        view.hideEditLink();
+        view.hideActions();
         
         $('body').bind('mousemove', function (e) {
             
-            if (editLinkShown) {
-                clearTimeout(editLinkTimeout);
-                editLinkTimeout = setTimeout(fadeOutEditLink, 1000);
+            if (actionsShown) {
+                clearTimeout(actionsTimeout);
+                actionsTimeout = setTimeout(fadeOutActions, 1000);
             }
             else {
-                editLinkShown = true;
-                view.showEditLink();
+                actionsShown = true;
+                view.showActions();
                 
-                editLinkTimeout = setTimeout(fadeOutEditLink, 1000);
+                actionsTimeout = setTimeout(fadeOutActions, 1000);
             }
         });
     };
