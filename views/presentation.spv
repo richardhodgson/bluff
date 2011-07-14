@@ -1,0 +1,12 @@
+: var pres = this.args.pres
+
+<% this.actions() %>
+
+<% this.output(pres.body_rendered) %> 
+
+<~method actions>
+    <p class="edit">
+        <a class="editLink" href="/p/<%= pres.slug %>/edit">Edit<span> this presentation</span></a>
+    </p>
+</~method>
+<~method footer></~method>

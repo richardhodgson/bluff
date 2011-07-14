@@ -1,0 +1,17 @@
+<~inherit "/presentation.spv" />
+
+<~method head>
+    <style><% this.output(this.args.css) %></style>
+    <script><% this.output(this.args.requireJquery) %></script>
+    
+    <script>
+        function define (deps, module) {
+            $(function () {
+                module($);
+            });
+        }
+    </script>
+    <script><% this.output(this.args.js) %></script>
+</~method>
+
+<~method actions></~method>
