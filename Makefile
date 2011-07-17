@@ -1,6 +1,6 @@
 
-./node_modules/.bin/litmus:
-	npm install litmus
+./node_modules:
+	npm install
 
-test: ./node_modules/.bin/litmus
+test: ./node_modules
 	./node_modules/.bin/litmus tests/suite.js
