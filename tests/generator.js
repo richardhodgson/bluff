@@ -5,7 +5,7 @@ exports.test = new litmus.Test('generator.js', function () {
     var generator = require('../lib/generator'),
         test      = this;
     
-    this.plan(21);
+    this.plan(23);
     
     this.async('parse', function (handle) {
         
@@ -53,6 +53,21 @@ exports.test = new litmus.Test('generator.js', function () {
             render('a slide'),
             '<div class="slide" id="slide1"><p>a slide</p><p class="navigation"></p></div>',
             'render generates expected markup'
+        );
+        
+        test.is(
+            render("a slide\n\n---\n\nanother slide"),
+                '<div class="slide" id="slide1"><p>a slide</p><p class="navigation"><a class="nextSlide" href="#slide2">next</a></p></div>' + "\n\n"+
+                '<div class="slide" id="slide2"><p>another slide</p><p class="navigation"><a class="previousSlide" href="#slide1">previous</a></p></div>',
+            'render 2 slides generates expected markup'
+        );
+        
+        test.is(
+            render("a slide\n\n---\n\nanother slide\n\n---\n\na final slide"),
+                '<div class="slide" id="slide1"><p>a slide</p><p class="navigation"><a class="nextSlide" href="#slide2">next</a></p></div>' + "\n\n" +
+                '<div class="slide" id="slide2"><p>another slide</p><p class="navigation"><a class="nextSlide" href="#slide3">next</a><a class="previousSlide" href="#slide1">previous</a></p></div>' + "\n\n" +
+                '<div class="slide" id="slide3"><p>a final slide</p><p class="navigation"><a class="previousSlide" href="#slide2">previous</a></p></div>',
+            'render 3 slides generates expected markup'
         );
         
         handle.finish();
