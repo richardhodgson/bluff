@@ -2,10 +2,10 @@ Use CSSP to make sure CSS is loaded before beginning.
 Themes - gray/white/orange is getting old
 Recently added list to front page
 Email link for presentation to me
-Hide nav items with JS?
-Hide window scrollbar
+Hide next/previous links (with JS)?
+Fix iphone rendering problems (fullscreen meta tag?)
 Minify static assets
 Packages json with correct deps
-Allow authors to 'lock' a presentation with a secret phrase.
 Allow someone to clone a presentation (without password)
 Support for images (and screen based resizing)
+Write some integration tests (!)
