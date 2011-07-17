@@ -5,7 +5,7 @@ exports.test = new litmus.Test('generator.js', function () {
     var generator = require('../lib/generator'),
         test      = this;
     
-    this.plan(1);
+    this.plan(21);
     
     this.async('parse', function (handle) {
         
@@ -41,6 +41,22 @@ exports.test = new litmus.Test('generator.js', function () {
         handle.finish();
     });
     
+    this.async('render', function (handle) {
+        
+        test.ok(generator.render, "Generator has render method");
+        
+        var render = generator.render;
+        
+        test.is(typeof render('a slide'), 'string', 'render returns a string');
+        
+        test.is(
+            render('a slide'),
+            '<div class="slide" id="slide1"><p>a slide</p><p class="navigation"></p></div>',
+            'render generates expected markup'
+        );
+        
+        handle.finish();
+    });
 });
 
 
