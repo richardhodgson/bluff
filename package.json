@@ -1,0 +1,27 @@
+{
+    "author": "Richard Hodgson <bluff@rhodgson.co.uk>",
+    "name": "bluff",
+    "description": "Make presentations, fast",
+    "version": "0.0.1",
+    "homepage": "bluff.rhodgson.co.uk",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/richardhodgson/bluff.git"
+    },
+    "scripts": {
+        "test": "make test"
+    },
+    "engines": {
+        "node": ">=v0.4.6"
+    },
+    "dependencies": {
+        "proton":      ">=0.4.0",
+        "micro":       ">=0.5.0",
+        "promised-io": ">=0.2.3",
+        "mongoose":    ">=1.7.3",
+        "markdown":    ">=0.2.1"
+    },
+    "devDependencies": {
+        "litmus": ">=0.2.0"
+    }
+}
