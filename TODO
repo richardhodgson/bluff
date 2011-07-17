@@ -8,4 +8,3 @@ Minify static assets
 Packages json with correct deps
 Allow someone to clone a presentation (without password)
 Support for images (and screen based resizing)
-Write some integration tests (!)
