@@ -42,7 +42,7 @@ exports.test = new litmus.Test('webapp.js', function () {
         require('mongoose').disconnect();
     }, 500);
     
-    this.plan(6);
+    this.plan(8);
     
     this.async("loading the homepage", function (handle) {
         
@@ -55,6 +55,22 @@ exports.test = new litmus.Test('webapp.js', function () {
             
             test.is(200, response.status, "/new returns a 200");
             test.ok(response.body[0].match(/<h1>Bluff/), "homepage has bluff title");
+            handle.finish();
+        });
+    
+    });
+    
+    this.async("loading the supported tags page", function (handle) {
+        
+        var bluff = new Webapp(),
+            test  = this;
+        
+        bluff.handle(
+            mockRequest('GET', "/supported-tags")
+        ).then(function (response) {
+            
+            test.is(200, response.status, "/supported-tags returns a 200");
+            test.ok(response.body[0].match(/<h2>Supported\sTags/i), "page has supported tags title");
             handle.finish();
         });
     

@@ -1,0 +1,27 @@
+<h1>Bluff</h1>
+<h2>Supported tags</h2>
+
+<p>
+    <em>Bluff</em> supports paragraphs and code block elements.
+</p>
+
+<p>
+: this.textarea("\n\nthis is a paragraph\n\nthis is another paragraph")
+</p>
+
+<p>
+: this.textarea("\n\n    this is a block of code\n    that spans multiple\n\n    lines")
+</p>
+
+<p>
+    You can also format the text inside a paragraph to be <span style="font-weight:bold">bold</span>,
+    <span style="font-style:italic">emphasised</span> or as an inline <span style="font-family:courier new; courier">code</span> block.
+</p>
+
+<p>
+: this.textarea("Here is some **bold** and *emphasised* text.\n\nThis paragaph has `code` in it.")
+</p>
+
+<~init>
+    this.addBodyClass('supported-tags');
+</~init>

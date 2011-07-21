@@ -119,6 +119,10 @@ label span {
     height: 12em;
 }
 
+.supported-tags textarea {
+    height: 6em;
+}
+
 input {
     font-family: helvetica, arial, sans-serif;
     font-size: 48px;

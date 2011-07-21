@@ -29,12 +29,15 @@
         <p class="message"><%= message %></p>
 : }
     <form action="<%= action %>" method="post">
-        <textarea name="body" id="body" rows="20" cols="60"><%= body %></textarea>
+: this.textarea(body)
 : this.editorSlot();
         <input class="savebutton" type="submit" value="Save" />
     </form>
 </~method>
 
+<~method textarea(body)>
+    <textarea name="body" id="body" rows="20" cols="60"><%= body %></textarea>
+</~method>
 <~method editorSlot></~method>
 
 <~method addBodyClass(classname)><%
