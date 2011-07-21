@@ -18,6 +18,10 @@
 :     "this is the first slide\n\n---\n\nthis is the second slide"
 : )
 
+<p>
+    That's it! Read the list of <a href="/supported-tags">supported tags</a>.
+</p>
+
 <~init>
     this.addBodyClass('home');
 </~init>

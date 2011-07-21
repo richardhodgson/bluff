@@ -74,7 +74,8 @@ form {
     display: block;
     text-align: right;
     width: 500px;
-    margin: 0 auto 2em auto;
+    margin: 0 auto;
+    overflow: auto;
 }
 
 textarea,
