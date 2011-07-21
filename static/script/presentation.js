@@ -101,6 +101,8 @@ define(["jquery"], function ($) {
         
         this.wrapSlideContents();
         updatePositioning();
+        
+        this.hideNavElements();
     }
     
     /**
@@ -225,6 +227,10 @@ define(["jquery"], function ($) {
             }
         });
     };
+    
+    View.prototype.hideNavElements = function () {
+        $('.navigation').hide();
+    }
     
     function setup () {
         new Controller();

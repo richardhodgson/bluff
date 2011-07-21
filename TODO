@@ -2,7 +2,6 @@ Use CSSP to make sure CSS is loaded before beginning.
 Themes - gray/white/orange is getting old
 Recently added list to front page
 Email link for presentation to me
-Hide next/previous links (with JS)?
 Fix iphone rendering problems (fullscreen meta tag?)
 Minify static assets
 Allow someone to clone a presentation (without password)
