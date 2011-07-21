@@ -1,5 +1,9 @@
-html, body {
+html {
     height: 100%;
+}
+
+body {
+    min-height: 100%;
 }
 
 body, div, h1, h2, p, textarea, input {
@@ -7,9 +11,10 @@ body, div, h1, h2, p, textarea, input {
     margin: 0;
 }
 
-body {
+.page {
     text-align:center;
     padding-top: 18px;
+    min-height: 100%;
 }
 
 h1 {
@@ -168,7 +173,7 @@ label span,
 /* try http://www.colourlovers.com/palette/1590463/No_Me_Mientas?widths=1 */
 body {
     background: #33292E;
-    border-top: 14px solid #5C3E4D;
+    border-bottom: 12px solid #DE7B5F;
 }
 
 h1 {
@@ -237,5 +242,9 @@ label,
 
 .footer {
     background: none;
-    border-bottom: 12px solid #DE7B5F;
+    
+}
+
+.page {
+    border-top: 14px solid #5C3E4D;
 }

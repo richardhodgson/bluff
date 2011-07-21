@@ -12,13 +12,15 @@
         <%  this.tracking() %>
     </head>
     <body<% this.output((this.bodyClasses.length) ? ' class="'+ this.bodyClasses.join(" ") +'"' : '') %>>
+        <div class="page">
 <% next(this) %>
-        <~method footer>
-        <p class="footer">
-            Made with <a href="http://use.no.de">use.no.de</a> by <a href="http://twitter.com/richardhodgson">Richard Hodgson</a>
-        </p>
-        </~method>
-        <% this.footer() %>
+            <~method footer>
+            <p class="footer">
+                Made with <a href="http://use.no.de">use.no.de</a> by <a href="http://twitter.com/richardhodgson">Richard Hodgson</a>
+            </p>
+            </~method>
+            <% this.footer() %>
+        </div>
     </body>
 </html>
 
