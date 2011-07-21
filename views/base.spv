@@ -13,7 +13,10 @@
     </head>
     <body<% this.output((this.bodyClasses.length) ? ' class="'+ this.bodyClasses.join(" ") +'"' : '') %>>
         <div class="page">
+<~method bluffTitle>
             <h1><a href="/new">Bluff</a></h1>
+</~method>
+: this.bluffTitle()
 <% next(this) %>
             <~method footer>
             <p class="footer">
