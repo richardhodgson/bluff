@@ -54,7 +54,7 @@ exports.test = new litmus.Test('webapp.js', function () {
         ).then(function (response) {
             
             test.is(200, response.status, "/new returns a 200");
-            test.ok(response.body[0].match(/<h1>Bluff/), "homepage has bluff title");
+            test.ok(response.body[0].match(/Bluff<\/a><\/h1>/), "homepage has bluff title");
             handle.finish();
         });
     
