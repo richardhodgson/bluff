@@ -8,5 +8,5 @@ test: ./node_modules
 ../joyent:
 	git clone ssh://richard@september.mine.nu/repos/joyent ../joyent
 
-deploy : ../joyent
+deploy : test ../joyent
 	make -f ../joyent/Makefile site=bluff deploy
