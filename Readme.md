@@ -17,7 +17,7 @@ Use [npm|http://npmjs.org] to install dependencies.
     cd bluff && /
     npm install
 
-Run the tests
+Run the tests.
 
     make test
 

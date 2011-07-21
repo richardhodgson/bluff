@@ -14,11 +14,11 @@
 
 <p>
     You can also format the text inside a paragraph to be <span style="font-weight:bold">bold</span>,
-    <span style="font-style:italic">emphasised</span> or as an inline <span style="font-family:courier new; courier">code</span> block.
+    <span style="font-style:italic">emphasized</span> or as an inline <span style="font-family:courier new; courier">code</span> block.
 </p>
 
 <p>
-: this.textarea("Here is some **bold** and *emphasised* text.\n\nThis paragaph has `code` in it.")
+: this.textarea("Here is some **bold** and *emphasized* text.\n\nThis paragraph has `code` in it.")
 </p>
 
 <~init>
