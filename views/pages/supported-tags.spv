@@ -10,7 +10,7 @@
 </p>
 
 <p>
-: this.textarea("\n\n    this is a block of code\n    that spans multiple\n\n    lines")
+: this.textarea("\n\n    this is a block of code\n    that spans multiple\n    lines")
 </p>
 
 <p>
