@@ -6,3 +6,5 @@ Fix iphone rendering problems (fullscreen meta tag?)
 Minify static assets
 Allow someone to clone a presentation (without password)
 Support for images (and screen based resizing)
+Support for blockquotes
+Support for bullet / numbered lists
