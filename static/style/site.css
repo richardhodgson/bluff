@@ -128,7 +128,7 @@ label span {
 }
 
 input {
-    font-family: helvetica, arial, sans-serif;
+    font-family: "helvetica neue", arial, sans-serif;
     font-size: 48px;
     padding: 8px 8px 2px 8px;
     margin: 0.5em 0;
@@ -139,16 +139,11 @@ input.textbox {
     border-left: none;
 }
 
-/* bloody Chrome & webkit, cripple Firefox for consistency */
-input[type="submit"]::-moz-focus-inner {
-    padding: 6px 0 0 0;
-}
-
 .savebutton {
     padding: 0 0 4px 0;
     float: right;
     width: 130px;
-    height: 56px;
+    height: 60px;
     margin-top: 1em;
     _padding: 0;
     -webkit-border-radius: 0px;
