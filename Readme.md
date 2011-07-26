@@ -14,7 +14,7 @@ Clone the repo...
 
 Use [npm](http://npmjs.org) to install dependencies.
 
-    cd bluff && /
+    cd bluff && \
     npm install
 
 Run the tests.
