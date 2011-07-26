@@ -1,4 +1,4 @@
-== Features
+## Features
 
 * Presentation themes (gray/white/orange is getting old)
 * Support for bullet / numbered lists
@@ -7,7 +7,7 @@
 * Recently created list on front page
 * Allow someone to clone a presentation (looses their password)
 
-== Tech
+## Tech
 * Make sure CSS is loaded before size calculations (use CSSP?)
 * Fix iphone rendering problems (fullscreen meta tag?)
 * Minify static assets
