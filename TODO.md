@@ -12,4 +12,5 @@
 * Fix iphone rendering problems (fullscreen meta tag?)
 * Minify static assets
 * Version static assets and add better cache headers
+* Font resizes to fit all slide contents (should default to ~60px)
 
