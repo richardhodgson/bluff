@@ -5,7 +5,7 @@ exports.test = new litmus.Test('generator.js', function () {
     var generator = require('../lib/generator'),
         test      = this;
     
-    this.plan(25);
+    this.plan(29);
     
     this.async('parse', function (handle) {
         
