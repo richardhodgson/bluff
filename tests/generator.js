@@ -5,7 +5,7 @@ exports.test = new litmus.Test('generator.js', function () {
     var generator = require('../lib/generator'),
         test      = this;
     
-    this.plan(25);
+    this.plan(30);
     
     this.async('parse', function (handle) {
         
@@ -43,6 +43,17 @@ exports.test = new litmus.Test('generator.js', function () {
         
         test.ok(isArray(parse(singleNewlineHorizontalRule)), "parse for multiple slides returns an AST array");
         test.is(parse(singleNewlineHorizontalRule).length, 3, "returned AST has 3 slides in total");
+        
+        var supportedBlockTags = "a paragraph\n\n* one\n* two\n* three\n\n\n"
+                               + "another paragraph\n\n"
+                               + "1. aaa\n2. bbb\n3. ccc\n\n"
+                               + "> a block quote";
+        
+        test.is(parse(supportedBlockTags)[1][2][0], 'para', 'first block element is a paragraph');
+        test.is(parse(supportedBlockTags)[1][3][0], 'bulletlist', 'second block element is a bulletlist');
+        test.is(parse(supportedBlockTags)[1][5][0], 'numberlist', 'fourth block element is a numberlist');
+        test.is(parse(supportedBlockTags)[1][6][0], 'blockquote', 'fifth block element is a blockquote');
+        test.is(parse(supportedBlockTags)[1][6][1], 'a block quote', 'blockquote contains the expected text');
         
         handle.finish();
     });

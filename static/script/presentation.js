@@ -138,7 +138,7 @@ define(["jquery"], function ($) {
     View.prototype.wrapSlideContents = function () {
         this.slides.each(function (i) {
             var slide = $(this),
-                children = slide.find('pre,p:not(.navigation)');
+                children = slide.find('pre,blockquote,ol,ul,p:not(.navigation)');
                 
             children.wrapAll('<div class="slideContents"></div>');
             children.css({
