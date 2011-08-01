@@ -2,7 +2,7 @@
 
 *Make presentations, fast.*
 
-Create presentations from markdown.
+Create presentations with markdown.
 
 [bluff.rhodgson.co.uk|http://bluff.rhodgson.co.uk]
 
