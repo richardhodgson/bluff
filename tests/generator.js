@@ -5,7 +5,7 @@ exports.test = new litmus.Test('generator.js', function () {
     var generator = require('../lib/generator'),
         test      = this;
     
-    this.plan(29);
+    this.plan(30);
     
     this.async('parse', function (handle) {
         
@@ -53,6 +53,7 @@ exports.test = new litmus.Test('generator.js', function () {
         test.is(parse(supportedBlockTags)[1][3][0], 'bulletlist', 'second block element is a bulletlist');
         test.is(parse(supportedBlockTags)[1][5][0], 'numberlist', 'fourth block element is a numberlist');
         test.is(parse(supportedBlockTags)[1][6][0], 'blockquote', 'fifth block element is a blockquote');
+        test.is(parse(supportedBlockTags)[1][6][1], 'a block quote', 'blockquote contains the expected text');
         
         handle.finish();
     });
