@@ -21,6 +21,22 @@
 : this.textarea("Here is some **bold** and *emphasized* text.\n\nThis paragraph has `code` in it.")
 </p>
 
+<p>
+    <em>Bluff</em> slides can contain ordered numbered lists.
+</p>
+
+<p>
+: this.textarea("\n\n1. Apples\n2. Oranges\n3. Pears")
+</p>
+
+<p>
+    Lists of bullet points are supported too.
+</p>
+
+<p>
+: this.textarea("\n\n* Red\n* Blue\n* Green")
+</p>
+
 <~init>
     this.addBodyClass('supported-tags');
 </~init>
