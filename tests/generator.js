@@ -5,7 +5,7 @@ exports.test = new litmus.Test('generator.js', function () {
     var generator = require('../lib/generator'),
         test      = this;
     
-    this.plan(23);
+    this.plan(25);
     
     this.async('parse', function (handle) {
         
@@ -37,6 +37,12 @@ exports.test = new litmus.Test('generator.js', function () {
         test.is(parse(multipleSlides)[3][1].class, 'slide', "last slide has 'slide' classname.");
         test.is(parse(multipleSlides)[3][1].id, 'slide3', "last div has correct id.");
         test.is(parse(multipleSlides)[3][2][1], 'a final slide', "returned AST has correct content for last paragraph");
+        
+        
+        var singleNewlineHorizontalRule = "a slide\n---\nanother slide";
+        
+        test.ok(isArray(parse(singleNewlineHorizontalRule)), "parse for multiple slides returns an AST array");
+        test.is(parse(singleNewlineHorizontalRule).length, 3, "returned AST has 3 slides in total");
         
         handle.finish();
     });
