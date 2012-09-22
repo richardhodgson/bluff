@@ -1,5 +1,5 @@
 var litmus  = require('litmus'),
-    Promise = require('promised-io/lib/promise').Promise;
+    Promise = require('promised-io/promise').Promise;
 
 /**
 * Mock a JSGI request object
@@ -33,9 +33,9 @@ function mockRequest (method, url, body) {
 }
 
 exports.test = new litmus.Test('webapp.js', function () {
-    
+
     var Webapp = require('../lib/webapp').WebApp;
-    
+
     // mongoose will hold the mongo connection indefinately
     // unless told otherwise.
     setTimeout(function () {
@@ -55,7 +55,7 @@ exports.test = new litmus.Test('webapp.js', function () {
             
             test.is(200, response.status, "/new returns a 200");
             test.ok(response.body[0].match(/Bluff<\/a><\/h1>/), "homepage has bluff title");
-            handle.finish();
+            handle.resolve();
         });
     
     });
@@ -71,7 +71,7 @@ exports.test = new litmus.Test('webapp.js', function () {
             
             test.is(200, response.status, "/supported-tags returns a 200");
             test.ok(response.body[0].match(/<h2>Supported\sTags/i), "page has supported tags title");
-            handle.finish();
+            handle.resolve();
         });
     
     });
@@ -94,7 +94,7 @@ exports.test = new litmus.Test('webapp.js', function () {
             ).then(function (response) {
                 test.is(200, response.status, "new presentation is viewable");
                 test.ok(response.body[0].match(/a test slide/), "presentation contains the expected slide contents");
-                handle.finish();
+                handle.resolve();
             });
         });
     });
