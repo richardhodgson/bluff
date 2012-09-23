@@ -1,0 +1,9 @@
+<h2>Page not found</h2>
+
+<p>
+    <em>Sorry</em>, that page doesn't exist.
+</p>
+
+<~init>
+    this.addBodyClass('404');
+</~init>
