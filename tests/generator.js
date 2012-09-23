@@ -55,7 +55,7 @@ exports.test = new litmus.Test('generator.js', function () {
         test.is(parse(supportedBlockTags)[1][6][0], 'blockquote', 'fifth block element is a blockquote');
         test.is(parse(supportedBlockTags)[1][6][1], 'a block quote', 'blockquote contains the expected text');
         
-        handle.finish();
+        handle.resolve();
     });
     
     this.async('render', function (handle) {
@@ -87,7 +87,7 @@ exports.test = new litmus.Test('generator.js', function () {
             'render 3 slides generates expected markup'
         );
         
-        handle.finish();
+        handle.resolve();
     });
 });
 
