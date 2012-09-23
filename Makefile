@@ -15,8 +15,8 @@ mongo-check:
 test: ./node_modules mongo-check
 	./node_modules/.bin/litmus tests/suite.js
 
-../joyent:
-	git clone ssh://richard@september.mine.nu/repos/joyent ../joyent
-
-deploy : test ../joyent
-	make -f ../joyent/Makefile site=bluff deploy
+deploy:
+	@ if [ -z "$(shell git remote | grep rhc)" ]; then \
+		git remote add rhc ssh://0a0e49b9001141e5b2faa428d2cd22a6@live-bluff.rhcloud.com/~/git/live.git; \
+	fi
+	git push rhc master
