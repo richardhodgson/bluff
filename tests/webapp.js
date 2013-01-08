@@ -1,5 +1,6 @@
 var litmus  = require('litmus'),
     Promise = require('promised-io/promise').Promise;
+    after   = require('promised-io/promise').all;
 
 /**
 * Mock a JSGI request object
@@ -36,13 +37,7 @@ exports.test = new litmus.Test('webapp.js', function () {
 
     var Webapp = require('../lib/webapp').WebApp;
 
-    // mongoose will hold the mongo connection indefinately
-    // unless told otherwise.
-    setTimeout(function () {
-        require('mongoose').disconnect();
-    }, 500);
-    
-    this.plan(8);
+    this.plan(15);
     
     this.async("loading the homepage", function (handle) {
         
@@ -95,6 +90,68 @@ exports.test = new litmus.Test('webapp.js', function () {
                 test.is(response.status, 200, "new presentation is viewable");
                 test.ok(response.body[0].match(/a test slide/), "presentation contains the expected slide contents");
                 handle.resolve();
+            });
+        });
+    });
+
+    this.async("test 404s", function (handle) {
+
+        var bluff = new Webapp(),
+            test  = this,
+            isPageNotFound = function (url, message) {
+                return bluff.handle(mockRequest('GET', "/p/blahblah")).then(function (response) {
+                    test.is(response.status, 404, message);
+                });
+            };
+        
+        after(
+            isPageNotFound("/p/blahblah", "viewing a presentation that doesn't exist returns a 404"),
+            isPageNotFound("/p/blahblah/edit", "editing a presentation that doesnt exist returns a 404")
+        ).then(function () {
+            handle.resolve();
+        });
+    });
+    
+    this.async("editing a presentation", function (handle) {
+
+        var bluff = new Webapp(),
+            test  = this;
+        
+        bluff.handle(
+            mockRequest('POST', "/new", {body: 'a test slide'})
+        ).then(function (response) {
+
+            var url = response.headers.Location;
+            
+            test.ok(url, "created a new presentation to edit");
+            
+            // follow the redirect
+            bluff.handle(
+                mockRequest('GET', url)
+            ).then(function (response) {
+                test.is(response.status, 200, "new presentation is viewable");
+
+                // click the edit link
+                bluff.handle(
+                    mockRequest('GET', url + '/edit')
+                ).then(function (response) {
+                    
+                    test.ok(response.body[0].match(/form action/), "presentation can be edited");
+                    
+                    // change something and save
+                    bluff.handle(
+                        mockRequest('POST', url + '/edit', {body: 'something new'})
+                    ).then(function (response) {
+
+                        test.nok(response.body[0].match(/a test slide/), "presentation don't contain the old contents");
+                        test.ok(response.body[0].match(/something new/), "presentation contains the new slide contents");
+                        handle.resolve();
+                    });
+
+
+                });
+                /*
+*/
             });
         });
     });
