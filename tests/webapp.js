@@ -37,7 +37,7 @@ exports.test = new litmus.Test('webapp.js', function () {
 
     var Webapp = require('../lib/webapp').WebApp;
 
-    this.plan(15);
+    this.plan(18);
     
     this.async("loading the homepage", function (handle) {
         
@@ -137,21 +137,64 @@ exports.test = new litmus.Test('webapp.js', function () {
                 ).then(function (response) {
                     
                     test.ok(response.body[0].match(/form action/), "presentation can be edited");
-                    
+
                     // change something and save
                     bluff.handle(
                         mockRequest('POST', url + '/edit', {body: 'something new'})
                     ).then(function (response) {
 
-                        test.nok(response.body[0].match(/a test slide/), "presentation don't contain the old contents");
-                        test.ok(response.body[0].match(/something new/), "presentation contains the new slide contents");
-                        handle.resolve();
+                        test.nok(response.body[0].match(/a test slide/), "edit area doesn't contain the old contents");
+                        test.ok(response.body[0].match(/something new/), "edit area contains the new slide contents");
+                        
+                        bluff.handle(
+                            mockRequest('GET', url)
+                        ).then(function (response) {
+
+                            test.nok(response.body[0].match(/a test slide/), "presentation doesn't contain the old contents");
+                            test.ok(response.body[0].match(/something new/), "presentation contains the new slide contents");
+                            handle.resolve();
+                        });
                     });
-
-
                 });
-                /*
-*/
+            });
+        });
+    });
+
+    this.async("editing a presentation with password", function (handle) {
+
+        var bluff = new Webapp(),
+            test  = this;
+        
+        bluff.handle(
+            mockRequest('POST', "/new", {body: 'a test slide'})
+        ).then(function (response) {
+
+            var url = response.headers.Location;
+            
+            // follow the redirect
+            bluff.handle(
+                mockRequest('GET', url)
+            ).then(function (response) {
+
+                // click the edit link
+                bluff.handle(
+                    mockRequest('GET', url + '/edit')
+                ).then(function (response) {
+                    
+                    // change something and save
+                    bluff.handle(
+                        mockRequest('POST', url + '/edit', {body: 'something new', password: 'psst'})
+                    ).then(function (response) {
+
+                        // change something and save
+                        bluff.handle(
+                            mockRequest('POST', url + '/edit', {body: 'something else new', password: 'psst'})
+                        ).then(function (response) {
+                            test.ok(response.body[0].match(/something else new/), "presentation can be edited with password");
+                            handle.resolve();
+                        });
+                    });
+                });
             });
         });
     });
