@@ -75,7 +75,7 @@ exports.test = new litmus.Test('webapp.js', function () {
         });
     
     });
-    
+
     this.async("creating a new presentation", function (handle) {
         
         var bluff = new Webapp(),
@@ -92,7 +92,7 @@ exports.test = new litmus.Test('webapp.js', function () {
             bluff.handle(
                 mockRequest('GET', response.headers.Location)
             ).then(function (response) {
-                test.is(200, response.status, "new presentation is viewable");
+                test.is(response.status, 200, "new presentation is viewable");
                 test.ok(response.body[0].match(/a test slide/), "presentation contains the expected slide contents");
                 handle.resolve();
             });
