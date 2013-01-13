@@ -2,6 +2,8 @@ var litmus  = require('litmus'),
     Promise = require('promised-io/promise').Promise;
     after   = require('promised-io/promise').all;
 
+var LIAN_MOCK_PATH = 'lian/lib/mock';
+
 /**
 * Mock a JSGI request object
 * @param method e.g 'GET', 'POST' etc
@@ -36,6 +38,7 @@ function mockRequest (method, url, body) {
 exports.test = new litmus.Test('webapp.js', function () {
 
     var Webapp = require('../lib/webapp').WebApp;
+    Webapp.setLianPath(LIAN_MOCK_PATH);
 
     this.plan(20);
     
