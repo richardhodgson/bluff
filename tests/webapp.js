@@ -37,7 +37,7 @@ exports.test = new litmus.Test('webapp.js', function () {
 
     var Webapp = require('../lib/webapp').WebApp;
 
-    this.plan(18);
+    this.plan(20);
     
     this.async("loading the homepage", function (handle) {
         
@@ -192,6 +192,52 @@ exports.test = new litmus.Test('webapp.js', function () {
                         ).then(function (response) {
                             test.ok(response.body[0].match(/something else new/), "presentation can be edited with password");
                             handle.resolve();
+                        });
+                    });
+                });
+            });
+        });
+    });
+
+    this.async("editing a presentation with incorrect password shows an error message", function (handle) {
+
+        var bluff = new Webapp(),
+            test  = this;
+        
+        bluff.handle(
+            mockRequest('POST', "/new", {body: 'a test slide'})
+        ).then(function (response) {
+
+            var url = response.headers.Location;
+            
+            // follow the redirect
+            bluff.handle(
+                mockRequest('GET', url)
+            ).then(function (response) {
+
+                // click the edit link
+                bluff.handle(
+                    mockRequest('GET', url + '/edit')
+                ).then(function (response) {
+                    
+                    // change something and save
+                    bluff.handle(
+                        mockRequest('POST', url + '/edit', {body: 'something new', password: 'psst'})
+                    ).then(function (response) {
+
+                        // change something and save
+                        bluff.handle(
+                            mockRequest('POST', url + '/edit', {body: 'something else new', password: 'psst1'})
+                        ).then(function (response) {
+                            test.ok(response.body[0].match(/passwords don\'t match/), "there is an error message");
+
+                            // view the presentation
+                            bluff.handle(
+                                mockRequest('GET', url)
+                            ).then(function (response) {
+                                test.ok(response.body[0].match(/something new/), "presentation hasn't been updated");
+                                handle.resolve();
+                            });
                         });
                     });
                 });
