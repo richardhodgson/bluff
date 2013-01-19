@@ -173,7 +173,7 @@ exports.test = new litmus.Test('webapp.js', function () {
         ).then(function (response) {
 
             var url = response.headers.Location;
-            
+
             // follow the redirect
             bluff.handle(
                 mockRequest('GET', url)
@@ -212,7 +212,7 @@ exports.test = new litmus.Test('webapp.js', function () {
         ).then(function (response) {
 
             var url = response.headers.Location;
-            
+
             // follow the redirect
             bluff.handle(
                 mockRequest('GET', url)

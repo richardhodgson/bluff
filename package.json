@@ -20,7 +20,8 @@
         "spectrum":    ">=0.4.1",
         "promised-io": ">=0.3.0",
         "mongoose":    ">=1.7.3",
-        "markdown":    ">=0.2.1"
+        "markdown":    ">=0.2.1",
+        "base62":      ">=0.1.1"
     },
     "devDependencies": {
         "litmus": ">=0.2.0"
