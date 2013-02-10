@@ -20,3 +20,8 @@ deploy:
 		git remote add rhc ssh://0a0e49b9001141e5b2faa428d2cd22a6@live-bluff.rhcloud.com/~/git/live.git; \
 	fi
 	git push rhc master
+
+server: ./node_modules
+	@ export BLUFF_DB_NAME=bluff; \
+	echo "Starting bluff on 0.0.0.0:8090"; \
+	node server.js
