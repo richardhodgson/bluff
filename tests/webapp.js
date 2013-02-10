@@ -4,6 +4,8 @@ var litmus  = require('litmus'),
 
 var LIAN_MOCK_PATH = 'lian/lib/mock';
 
+process.env.BLUFF_DB_NAME = 'bluff-litmus-test';
+
 /**
 * Mock a JSGI request object
 * @param method e.g 'GET', 'POST' etc
