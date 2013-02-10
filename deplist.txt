@@ -7,11 +7,3 @@
 #
 #  ***************************************************************************
 #
-
-proton
-micro
-spectrum
-promised-io
-mongoose
-markdown
-jsgi
