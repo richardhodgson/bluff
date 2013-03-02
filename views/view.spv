@@ -2,6 +2,7 @@
 
 <~method head>
     <!-- link rel="stylesheet" type="text/css" media="screen" href="/style/presentation.css"/ -->
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:700' rel='stylesheet' type='text/css'>
     <style>
         html, body {
             height: 100%;
@@ -18,6 +19,10 @@
 
         .slide {
             position: absolute;
+            font-family: 'PT Sans Narrow', sans-serif;
+            font-size: 1em;
+            line-height: 1em;
+            text-align: center;
         }
     </style>
     <script src="/script/vendor/require-jquery.js"></script>

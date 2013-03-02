@@ -271,7 +271,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
         $slideContainer.attr('data-height', slideHeight);
         $slideContainer.attr('data-min-scale', '1');
         $slideContainer.attr('data-max-scale', '1');
-        $slideContainer.attr('data-transition-duration', '200');
+        $slideContainer.attr('data-transition-duration', '350');
 
         function positionSlide (number) {
             var rotation = number * segmentAngle,
@@ -283,6 +283,28 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             $el.attr('data-x', x);
             $el.attr('data-y', y);
             $el.attr('data-rotate', rotation);
+
+            // measuring for contents re-positioning
+            var $slideChildren = $el.children();
+            $slideChildren.css('display', 'inline');
+            var $slideMeasure = $el.wrapInner('<div class="slide-measure" style="display: inline; overflow: visible" />').find('.slide-measure');
+
+            // font size
+            var width = $slideMeasure.width(),
+                height = $slideMeasure.height();
+
+            $slideChildren.css('display', 'block');
+
+            var contentRatioWidth = Math.floor(slideWidth / width),
+                contentRatioHeight = Math.floor(slideHeight / height);
+
+            var fontSize = ((contentRatioWidth > contentRatioHeight) ? contentRatioHeight : contentRatioWidth) / 1.5;
+            $el.css('fontSize', fontSize + 'em');
+
+            // vertical positioning
+            $slideMeasure.css('display', 'block');
+            var verticalPad = Math.floor((slideHeight - $slideMeasure.height()));
+            $el.css('paddingTop', verticalPad + 'px');
         }
 
         for (var i = 1; i <= totalSlides; i++) {
