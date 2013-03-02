@@ -2,7 +2,7 @@
     "author": "Richard Hodgson <bluff@rhodgson.co.uk>",
     "name": "bluff",
     "description": "Make presentations, fast",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "homepage": "bluff.rhodgson.co.uk",
     "repository": {
         "type": "git",
