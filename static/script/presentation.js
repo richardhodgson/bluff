@@ -1,6 +1,7 @@
-define(["jquery"], function ($) {
+define(["jquery", "./vendor/impress.js"], function ($) {
     
-    function Controller () {        
+    function Controller () {
+        /*
         this.view         = new View();
         this.presentation = new Presentation();
         
@@ -8,6 +9,9 @@ define(["jquery"], function ($) {
         
         this.attachListeners();
         this.view.selectSlide(1);
+        */
+
+        this.view = new CircleView();
     }
     
     Controller.prototype.attachListeners = function () {
@@ -231,10 +235,71 @@ define(["jquery"], function ($) {
     View.prototype.hideNavElements = function () {
         $('.navigation').hide();
     }
+
+    function CircleView () {
+        $('.navigation').remove();
+
+        function convertAngle (i) {
+            return (Math.PI/180)*(i+(-180));
+        }
+
+        this.$slides = $('.slide');
+
+        var totalSlides = this.$slides.length,
+            slideWidth = $(window).width(),
+            slideHeight = $(window).height(),
+            radius = (totalSlides) * ((slideWidth/slideHeight)*10),
+            radius = slideWidth,
+            segmentAngle = 360 / totalSlides;
+
+        // create origin
+        var origin = {
+            'x': slideWidth / 2,
+            'y': slideHeight / 2
+        }
+
+        console.log(origin);
+        // each slide; set x,y,rotation
+
+        // TODO abstract as much of this as possible into sep CSS
+        this.$slides.css({
+            'position': 'absolute',
+            'width':    slideWidth,
+            'height':   slideHeight
+        });
+
+        this.$slides.addClass('step');
+
+        $('#impress').attr('data-width', slideWidth);
+        $('#impress').attr('data-height', slideHeight);
+        $('#impress').attr('data-min-scale', '1');
+        $('#impress').attr('data-max-scale', '1');
+        $('#impress').attr('data-transition-duration', '200');
+
+        function positionSlide (number) {
+            var rotation = number * segmentAngle,
+                angle    = convertAngle(rotation),
+                x        = (radius*Math.cos(angle)) + origin.x,
+                y        = (radius*Math.sin(angle)) + origin.y;
+
+            var $el = $('#slide' + number);
+            $el.attr('data-x', x);
+            $el.attr('data-y', y);
+            $el.attr('data-rotate', rotation);
+        }
+
+        for (var i = 1; i <= totalSlides; i++) {
+            positionSlide(i);
+        }
+
+        impress().init();
+        
+
+    }
     
     function setup () {
         new Controller();
     }
-    
+
     $(setup);
 });
