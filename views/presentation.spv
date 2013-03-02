@@ -1,8 +1,10 @@
 : var pres = this.args.pres
 
-<% this.actions(pres.slug) %>
+: // <% this.actions(pres.slug) %>
 
+<div id="slides">
 <% this.output(pres.body_rendered) %> 
+</div>
 
 <~method actions(slug)>
     <p class="actions">

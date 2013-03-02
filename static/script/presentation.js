@@ -266,11 +266,12 @@ define(["jquery", "./vendor/impress.js"], function ($) {
 
         this.$slides.addClass('step');
 
-        $('#impress').attr('data-width', slideWidth);
-        $('#impress').attr('data-height', slideHeight);
-        $('#impress').attr('data-min-scale', '1');
-        $('#impress').attr('data-max-scale', '1');
-        $('#impress').attr('data-transition-duration', '200');
+        var $slideContainer = $('#slides');
+        $slideContainer.attr('data-width', slideWidth);
+        $slideContainer.attr('data-height', slideHeight);
+        $slideContainer.attr('data-min-scale', '1');
+        $slideContainer.attr('data-max-scale', '1');
+        $slideContainer.attr('data-transition-duration', '200');
 
         function positionSlide (number) {
             var rotation = number * segmentAngle,
@@ -288,8 +289,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             positionSlide(i);
         }
 
-        impress().init();
-        
+        impress('slides').init();       
 
     }
     
