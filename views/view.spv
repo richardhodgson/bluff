@@ -1,7 +1,25 @@
 <~inherit "/presentation.spv" />
 
 <~method head>
-    <link rel="stylesheet" type="text/css" media="screen" href="/style/presentation.css"/>
+    <!-- link rel="stylesheet" type="text/css" media="screen" href="/style/presentation.css"/ -->
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            overflow:hidden;
+        }
+
+        body, div, p, pre, blockquote, ul, ol, li {
+            padding: 0;
+            margin: 0;
+        }
+
+        .slide {
+            position: absolute;
+        }
+    </style>
     <script src="/script/vendor/require-jquery.js"></script>
     <script>
         require(

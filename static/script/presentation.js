@@ -258,12 +258,8 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             'y': slideHeight / 2
         }
 
-        console.log(origin);
-        // each slide; set x,y,rotation
-
         // TODO abstract as much of this as possible into sep CSS
         this.$slides.css({
-            'position': 'absolute',
             'width':    slideWidth,
             'height':   slideHeight
         });
