@@ -284,6 +284,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             $el.attr('data-y', y);
             $el.attr('data-rotate', rotation);
 
+            //TODO abstract all this out
             // measuring for contents re-positioning
             var $slideChildren = $el.children();
             $slideChildren.css('display', 'inline');
@@ -305,6 +306,30 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             $slideMeasure.css('display', 'block');
             var verticalPad = Math.floor((slideHeight - $slideMeasure.height()));
             $el.css('paddingTop', verticalPad + 'px');
+
+            //
+            function addCircle ($parent, radius, fillStyle) {
+
+                var $canvas = $('<canvas style="position:absolute;" height="'+ radius*2 +'" width="'+ radius*2+'" />').appendTo($el);
+
+                var context = $canvas[0].getContext('2d');
+                context.fillStyle = fillStyle; // rgba(255, 255, 0, .5)
+                context.beginPath();
+                context.arc(radius, radius, radius, 0, Math.PI*2, true); 
+                context.closePath();
+                context.fill();
+                
+                return $canvas;
+            }
+
+            var largeCircleSize = 350;
+            $largeCircle = addCircle($el, largeCircleSize, 'rgba(0, 0, 255, 0.1)');
+            $largeCircle.css({
+                'left': (slideWidth - largeCircleSize) + 'px',
+                'top':  (slideHeight - largeCircleSize) + 'px'
+            });
+
+            
         }
 
         for (var i = 1; i <= totalSlides; i++) {
