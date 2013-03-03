@@ -23,6 +23,7 @@
             font-size: 1em;
             line-height: 1em;
             text-align: center;
+            letter-spacing: -0.02em;
         }
     </style>
     <script src="/script/vendor/require-jquery.js"></script>
