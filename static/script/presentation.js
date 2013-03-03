@@ -248,8 +248,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
         var totalSlides = this.$slides.length,
             slideWidth = $(window).width(),
             slideHeight = $(window).height(),
-            radius = (totalSlides) * ((slideWidth/slideHeight)*10),
-            radius = slideWidth,
+            radius = slideWidth * 1.5,
             segmentAngle = 360 / totalSlides;
 
         // create origin
@@ -287,20 +286,25 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             //TODO abstract all this out
             // measuring for contents re-positioning
             var $slideChildren = $el.children();
-            $slideChildren.css('display', 'inline');
-            var $slideMeasure = $el.wrapInner('<div class="slide-measure" style="display: inline; overflow: visible" />').find('.slide-measure');
+            $slideChildren.css({
+                'marginLeft':   'auto',
+                'marginRight':  'auto',
+                'marginBottom': '0.75em',
+                'width':        '14em'
+            });
+            var $slideMeasure = $el.wrapInner('<div class="slide-measure" style="display: inline; overflow: visible; position: relative; z-index: 10" />').find('.slide-measure');
 
             // font size
-            var width = $slideMeasure.width(),
-                height = $slideMeasure.height();
-
+            var width = $slideMeasure.width();
             $slideChildren.css('display', 'block');
+            var height = $slideMeasure.height();
 
             var contentRatioWidth = Math.floor(slideWidth / width),
                 contentRatioHeight = Math.floor(slideHeight / height);
 
-            var fontSize = ((contentRatioWidth > contentRatioHeight) ? contentRatioHeight : contentRatioWidth) / 1.5;
+            var fontSize = ((contentRatioWidth > contentRatioHeight) ? contentRatioHeight : contentRatioWidth) / 1.15;
             $el.css('fontSize', fontSize + 'em');
+
 
             // vertical positioning
             $slideMeasure.css('display', 'block');
@@ -310,7 +314,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             //
             function addCircle ($parent, radius, fillStyle) {
 
-                var $canvas = $('<canvas style="position:absolute;" height="'+ radius*2 +'" width="'+ radius*2+'" />').appendTo($el);
+                var $canvas = $('<canvas style="position:absolute;" height="'+ radius*2 +'" width="'+ radius*2+'" />').prependTo($el);
 
                 var context = $canvas[0].getContext('2d');
                 context.fillStyle = fillStyle; // rgba(255, 255, 0, .5)
@@ -322,21 +326,46 @@ define(["jquery", "./vendor/impress.js"], function ($) {
                 return $canvas;
             }
 
-            var largeCircleSize = 350;
+            var len = $el.text().length;
+            
+            var largeCircleMin = Math.floor(slideWidth / 6),
+                largeCircleMax = Math.floor(slideWidth / 3);
+
+            var largeCircleSize = Math.floor((slideWidth / (len/10))/2);
+
+            if (largeCircleSize > largeCircleMax) {
+                largeCircleSize = largeCircleMax;
+            }
+            else if (largeCircleSize < largeCircleMin) {
+                largeCircleSize = largeCircleMin;
+            }
+
             $largeCircle = addCircle($el, largeCircleSize, 'rgba(0, 0, 255, 0.1)');
+
+            var circleLeft = slideWidth,
+                circleTop = slideHeight;
+
+            if (number % 2 === 0) {
+                circleLeft -= largeCircleSize;
+                circleTop += largeCircleSize;
+            }
+            else {
+                circleLeft = 0 - largeCircleSize;
+                circleTop = 0 - largeCircleSize;
+            }
+
             $largeCircle.css({
-                'left': (slideWidth - largeCircleSize) + 'px',
-                'top':  (slideHeight - largeCircleSize) + 'px'
+                'left': circleLeft + 'px',
+                'top':  circleTop + 'px'
             });
 
-            
         }
 
         for (var i = 1; i <= totalSlides; i++) {
             positionSlide(i);
         }
 
-        impress('slides').init();       
+        impress('slides').init();
 
     }
     
