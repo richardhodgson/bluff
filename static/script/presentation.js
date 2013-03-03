@@ -302,9 +302,10 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             var contentRatioWidth = Math.floor(slideWidth / width),
                 contentRatioHeight = Math.floor(slideHeight / height);
 
-            var fontSize = ((contentRatioWidth > contentRatioHeight) ? contentRatioHeight : contentRatioWidth) / 1.15;
-            $el.css('fontSize', fontSize + 'em');
+            var fontSize = ((contentRatioWidth > contentRatioHeight) ? contentRatioHeight : contentRatioWidth) / 1.15,
+                fontSize = Math.round((fontSize * 10)) / 10; // round to 1 decimal place
 
+            $el.css('fontSize', fontSize + 'em');
 
             // vertical positioning
             $slideMeasure.css('display', 'block');
