@@ -360,6 +360,23 @@ define(["jquery", "./vendor/impress.js"], function ($) {
                 'top':  circleTop + 'px'
             });
 
+            /*
+            TODO
+
+            - rename largeCircle to largeShape (might be a polygon in the future...)
+            - smaller detail circles
+            - circles animating in different direction
+            - circles appearing over copy (possibly covered by above)
+            - anything that looks like abstraction / encapsulation
+            - optimisation: remove anything from loop that can be computed once (e.g. circle min/max size)
+            - other slides can be visible... not sure how I feel about this.
+            - Pull font from google + host here
+            - colours?!
+            - optimisation: cache+clone circles of particular radius'
+            - CSS asset optimisation... cache headers, packing etc. Maybe drop a load screen on *shudder*.
+            - styles for other elements (em, strong, ul, ol, etc)
+
+            */
         }
 
         for (var i = 1; i <= totalSlides; i++) {
