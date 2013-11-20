@@ -21,10 +21,24 @@
             position: absolute;
             font-family: 'PT Sans Narrow', sans-serif;
             font-size: 1em;
+            font-weight: bold;
             line-height: 1em;
             text-align: center;
             letter-spacing: -0.02em;
+            width: 10em;
         }
+
+
+        #shapes {
+            -webkit-animation: rotation 360s infinite linear;
+            
+        }
+
+        @-webkit-keyframes rotation {
+            from {-webkit-transform: rotate(0deg);}
+            to   {-webkit-transform: rotate(359deg);}
+        }
+
     </style>
     <script src="/script/vendor/require-jquery.js"></script>
     <script>

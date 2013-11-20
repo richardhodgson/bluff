@@ -237,6 +237,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
     }
 
     function CircleView () {
+        
         $('.navigation').remove();
 
         function convertAngle (i) {
@@ -249,12 +250,13 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             slideWidth = $(window).width(),
             slideHeight = $(window).height(),
             radius = slideWidth * 1.5,
+            radius = slideWidth * 10,
             segmentAngle = 360 / totalSlides;
 
         // create origin
         var origin = {
-            'x': slideWidth / 2,
-            'y': slideHeight / 2
+            'x': (slideWidth) / 2,
+            'y': (slideHeight) / 2
         }
 
         // TODO abstract as much of this as possible into sep CSS
@@ -271,6 +273,72 @@ define(["jquery", "./vendor/impress.js"], function ($) {
         $slideContainer.attr('data-min-scale', '1');
         $slideContainer.attr('data-max-scale', '1');
         $slideContainer.attr('data-transition-duration', '350');
+
+
+        function addCircle ($canvas, x, y, radius, fillStyle) {
+            var context = $canvas[0].getContext('2d');
+            context.fillStyle = fillStyle; // rgba(255, 255, 0, .5)
+            context.beginPath();
+            context.arc(x, y, radius, 0, Math.PI*2, true); 
+            context.closePath();
+            context.fill();
+        }
+
+
+        var largeCircleMin = Math.floor(slideWidth / 6),
+            largeCircleMax = Math.floor(slideWidth / 3);
+
+        var largeCircleSize = 100 //Math.floor((slideWidth / (len/10))/2);
+
+        if (largeCircleSize > largeCircleMax) {
+            largeCircleSize = largeCircleMax;
+        }
+        else if (largeCircleSize < largeCircleMin) {
+            largeCircleSize = largeCircleMin;
+        }
+
+        var canvasHeight = parseInt($(window).height()) + (largeCircleSize*2),
+            canvasWidth = parseInt($(window).width()) + (largeCircleSize*2);
+
+        var $canvas = $('<canvas id="shapes" style="position:absolute; left: -'+ largeCircleSize +'px; top: -'+ largeCircleSize +'px;" height="'+ canvasHeight +'" width="'+ canvasWidth +'" />').prependTo('.page');
+
+        addCircle($canvas, largeCircleSize, largeCircleSize, largeCircleSize, 'rgba(0, 0, 255, 0.1)');
+        addCircle($canvas, (largeCircleSize*1.5), (largeCircleSize*2), (largeCircleSize * 0.2), 'rgba(255, 150, 0, 0.3)');
+        addCircle($canvas, (largeCircleSize*2.5), (largeCircleSize*0.8), (largeCircleSize * 0.8), 'rgba(255, 150, 0, 0.1)');
+
+        
+        addCircle($canvas, (canvasWidth - (largeCircleSize*3)), (canvasHeight - largeCircleSize), (largeCircleSize * 0.6), 'rgba(255, 150, 0, 0.1)');
+        addCircle($canvas, (canvasWidth - (largeCircleSize*3.5)), (canvasHeight - (largeCircleSize*1.5)), (largeCircleSize * 0.3), 'rgba(0, 0, 255, 0.1)');
+
+        addCircle($canvas, (canvasWidth - (largeCircleSize*1.5)), (largeCircleSize*1.5), (largeCircleSize * 0.8), 'rgba(0, 0, 255, 0.1)');
+        addCircle($canvas, (canvasWidth - (largeCircleSize*1.6)), (largeCircleSize*2.4), (largeCircleSize * 0.4), 'rgba(255, 150, 0, 0.1)');
+
+        addCircle($canvas, (largeCircleSize*1.6), (canvasHeight - largeCircleSize*1.4), (largeCircleSize * 0.9), 'rgba(255, 150, 0, 0.1)');
+
+/*
+
+        var circleLeft = slideWidth,
+            circleTop = slideHeight;
+
+        $canvas.css({
+            'left': circleLeft + 'px',
+            'top':  circleTop + 'px'
+        });
+        if (number % 2 === 0) {
+            circleLeft -= largeCircleSize;
+            circleTop += largeCircleSize;
+        }
+        else {
+            circleLeft = 0 - largeCircleSize;
+            circleTop = 0 - largeCircleSize;
+        //}
+
+        $largeCircle.css({
+            'left': circleLeft + 'px',
+            'top':  circleTop + 'px'
+        });
+            */
+
 
         function positionSlide (number) {
             var rotation = number * segmentAngle,
@@ -305,13 +373,14 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             var fontSize = ((contentRatioWidth > contentRatioHeight) ? contentRatioHeight : contentRatioWidth) / 1.15,
                 fontSize = Math.round((fontSize * 10)) / 10; // round to 1 decimal place
 
-            $el.css('fontSize', fontSize + 'em');
+            //console.log(fontSize);
+            $el.css('fontSize', (fontSize) + 'em');
 
             // vertical positioning
             $slideMeasure.css('display', 'block');
             var verticalPad = Math.floor((slideHeight - $slideMeasure.height()));
             $el.css('paddingTop', verticalPad + 'px');
-
+/*
             //
             function addCircle ($parent, radius, fillStyle) {
 
@@ -359,6 +428,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
                 'left': circleLeft + 'px',
                 'top':  circleTop + 'px'
             });
+*/
 
             /*
             TODO
