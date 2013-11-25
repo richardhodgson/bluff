@@ -239,6 +239,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
     function CircleView () {
         
         $('.navigation').remove();
+        $('#slides').addClass('shapes');
 
         function convertAngle (i) {
             return (Math.PI/180)*(i+(-180));
@@ -298,7 +299,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
         var canvasHeight = parseInt($(window).height()) + (largeCircleSize*2),
             canvasWidth = parseInt($(window).width()) + (largeCircleSize*2);
 
-        var $canvas = $('<canvas id="shapes" style="position:absolute; left: -'+ largeCircleSize +'px; top: -'+ largeCircleSize +'px;" height="'+ canvasHeight +'" width="'+ canvasWidth +'" />').prependTo('.page');
+        var $canvas = $('<canvas id="shapes-bg" style="position:absolute; left: -'+ largeCircleSize +'px; top: -'+ largeCircleSize +'px;" height="'+ canvasHeight +'" width="'+ canvasWidth +'" />').prependTo('.page');
 
         addCircle($canvas, largeCircleSize, largeCircleSize, largeCircleSize, 'rgba(0, 0, 255, 0.1)');
         addCircle($canvas, (largeCircleSize*1.5), (largeCircleSize*2), (largeCircleSize * 0.2), 'rgba(255, 150, 0, 0.3)');
@@ -327,17 +328,11 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             //TODO abstract all this out
             // measuring for contents re-positioning
             var $slideChildren = $el.children();
-            $slideChildren.css({
-                'marginLeft':   'auto',
-                'marginRight':  'auto',
-                'marginBottom': '0.75em',
-                'width':        '14em'
-            });
+
             var $slideMeasure = $el.wrapInner('<div class="slide-measure" style="display: inline; overflow: visible; position: relative; z-index: 10" />').find('.slide-measure');
 
             // font size
             var width = $slideMeasure.width();
-            $slideChildren.css('display', 'block');
             var height = $slideMeasure.height();
 
             var contentRatioWidth = Math.floor(slideWidth / width),

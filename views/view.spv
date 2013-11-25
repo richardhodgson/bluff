@@ -17,7 +17,7 @@
             margin: 0;
         }
 
-        .slide {
+        .shapes .slide {
             position: absolute;
             font-family: 'PT Sans Narrow', sans-serif;
             font-size: 1em;
@@ -28,10 +28,17 @@
             width: 10em;
         }
 
+        .shapes .slide > * {
+            width: 14em;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0.75em;
+            display: block;
+        }
 
-        #shapes {
+
+        #shapes-bg {
             -webkit-animation: rotation 360s infinite linear;
-            
         }
 
         @-webkit-keyframes rotation {
