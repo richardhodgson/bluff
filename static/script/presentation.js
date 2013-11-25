@@ -253,13 +253,11 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             radius = slideWidth * 10,
             segmentAngle = 360 / totalSlides;
 
-        // create origin
         var origin = {
             'x': (slideWidth) / 2,
             'y': (slideHeight) / 2
         }
 
-        // TODO abstract as much of this as possible into sep CSS
         this.$slides.css({
             'width':    slideWidth,
             'height':   slideHeight
@@ -277,7 +275,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
 
         function addCircle ($canvas, x, y, radius, fillStyle) {
             var context = $canvas[0].getContext('2d');
-            context.fillStyle = fillStyle; // rgba(255, 255, 0, .5)
+            context.fillStyle = fillStyle;
             context.beginPath();
             context.arc(x, y, radius, 0, Math.PI*2, true); 
             context.closePath();
@@ -315,31 +313,6 @@ define(["jquery", "./vendor/impress.js"], function ($) {
 
         addCircle($canvas, (largeCircleSize*1.6), (canvasHeight - largeCircleSize*1.4), (largeCircleSize * 0.9), 'rgba(255, 150, 0, 0.1)');
 
-/*
-
-        var circleLeft = slideWidth,
-            circleTop = slideHeight;
-
-        $canvas.css({
-            'left': circleLeft + 'px',
-            'top':  circleTop + 'px'
-        });
-        if (number % 2 === 0) {
-            circleLeft -= largeCircleSize;
-            circleTop += largeCircleSize;
-        }
-        else {
-            circleLeft = 0 - largeCircleSize;
-            circleTop = 0 - largeCircleSize;
-        //}
-
-        $largeCircle.css({
-            'left': circleLeft + 'px',
-            'top':  circleTop + 'px'
-        });
-            */
-
-
         function positionSlide (number) {
             var rotation = number * segmentAngle,
                 angle    = convertAngle(rotation),
@@ -373,62 +346,12 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             var fontSize = ((contentRatioWidth > contentRatioHeight) ? contentRatioHeight : contentRatioWidth) / 1.15,
                 fontSize = Math.round((fontSize * 10)) / 10; // round to 1 decimal place
 
-            //console.log(fontSize);
             $el.css('fontSize', (fontSize) + 'em');
 
             // vertical positioning
             $slideMeasure.css('display', 'block');
             var verticalPad = Math.floor((slideHeight - $slideMeasure.height()));
             $el.css('paddingTop', verticalPad + 'px');
-/*
-            //
-            function addCircle ($parent, radius, fillStyle) {
-
-                var $canvas = $('<canvas style="position:absolute;" height="'+ radius*2 +'" width="'+ radius*2+'" />').prependTo($el);
-
-                var context = $canvas[0].getContext('2d');
-                context.fillStyle = fillStyle; // rgba(255, 255, 0, .5)
-                context.beginPath();
-                context.arc(radius, radius, radius, 0, Math.PI*2, true); 
-                context.closePath();
-                context.fill();
-                
-                return $canvas;
-            }
-
-            var len = $el.text().length;
-            
-            var largeCircleMin = Math.floor(slideWidth / 6),
-                largeCircleMax = Math.floor(slideWidth / 3);
-
-            var largeCircleSize = Math.floor((slideWidth / (len/10))/2);
-
-            if (largeCircleSize > largeCircleMax) {
-                largeCircleSize = largeCircleMax;
-            }
-            else if (largeCircleSize < largeCircleMin) {
-                largeCircleSize = largeCircleMin;
-            }
-
-            $largeCircle = addCircle($el, largeCircleSize, 'rgba(0, 0, 255, 0.1)');
-
-            var circleLeft = slideWidth,
-                circleTop = slideHeight;
-
-            if (number % 2 === 0) {
-                circleLeft -= largeCircleSize;
-                circleTop += largeCircleSize;
-            }
-            else {
-                circleLeft = 0 - largeCircleSize;
-                circleTop = 0 - largeCircleSize;
-            }
-
-            $largeCircle.css({
-                'left': circleLeft + 'px',
-                'top':  circleTop + 'px'
-            });
-*/
 
             /*
             TODO
