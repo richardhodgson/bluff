@@ -15,7 +15,6 @@ define(["jquery", "./vendor/impress.js"], function ($) {
     }
     
     Controller.prototype.attachListeners = function () {
-    
         var self = this,
             keys = {
                 'rightarrow': 39,
@@ -237,6 +236,8 @@ define(["jquery", "./vendor/impress.js"], function ($) {
     }
 
     function CircleView () {
+
+        this.setUpActions();
         
         $('.navigation').remove();
         $('#slides').addClass('shapes');
@@ -282,7 +283,6 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             context.closePath();
             context.fill();
         }
-
 
         var largeCircleMin = Math.floor(slideWidth / 6),
             largeCircleMax = Math.floor(slideWidth / 3);
@@ -372,7 +372,53 @@ define(["jquery", "./vendor/impress.js"], function ($) {
         }
 
         impress('slides').init();
+    }
 
+
+    CircleView.prototype.showActions = function () {
+        $('.actions').fadeIn();
+    }
+    
+    CircleView.prototype.hideActions = function () {
+        $('.actions').fadeOut();
+    }
+    
+    /**
+     * Adds a listener to the body on mouseover.
+     * Listener will show the actions links when the mouse moves
+     * and hide it after a second.
+     */
+    CircleView.prototype.setUpActions = function () {
+            
+        var actionsShown   = false,
+            actionsTimeout = null,
+            view            = this;
+        
+        var fadeOutActions = function () {
+            view.hideActions();
+            actionsTimeout = null;
+            actionsShown = false;
+        };
+        
+        view.hideActions();
+        
+        $('body').bind('mousemove', function (e) {
+            
+            if (actionsShown) {
+                clearTimeout(actionsTimeout);
+                actionsTimeout = setTimeout(fadeOutActions, 1000);
+            }
+            else {
+                actionsShown = true;
+                view.showActions();
+                
+                actionsTimeout = setTimeout(fadeOutActions, 1000);
+            }
+        });
+    };
+    
+    CircleView.prototype.hideNavElements = function () {
+        $('.navigation').hide();
     }
     
     function setup () {

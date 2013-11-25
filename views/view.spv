@@ -36,15 +36,53 @@
             display: block;
         }
 
-
         #shapes-bg {
             -webkit-animation: rotation 360s infinite linear;
+            animation: rotation 360s infinite linear;
         }
 
         @-webkit-keyframes rotation {
             from {-webkit-transform: rotate(0deg);}
             to   {-webkit-transform: rotate(359deg);}
         }
+
+        @keyframes rotation {
+            from {transform: rotate(0deg);}
+            to   {transform: rotate(359deg);}
+        }
+
+        .actions {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            overflow: hidden;
+            font-size:11px;
+        }
+
+        .actions a {
+            float:right;
+            padding: 4px 6px 4px 6px;
+            
+            text-decoration:none;
+            font-size:11px;
+            text-transform: uppercase;
+            font-family:"Arial", arial, sans-serif;
+            text-align: center;
+        }
+
+        .actions a span {
+            position: absolute;
+            left: 0px;
+            width: 0px;
+            text-indent: -2000px;
+        }
+
+        .actions a {
+            background: #33292E;
+            color: #DE7B5F;
+        }
+
 
     </style>
     <script src="/script/vendor/require-jquery.js"></script>
