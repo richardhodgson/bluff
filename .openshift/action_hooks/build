@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "build: attempting clean up"
+rm -fr app-root/runtime/dependencies/nodejs/node_modules/.bin/*
