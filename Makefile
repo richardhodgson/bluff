@@ -8,7 +8,7 @@ test: ./node_modules
 
 deploy:
 	@ if [ -z "$(shell git remote | grep rhc-preview)" ]; then \
-		git remote add rhc-preview ssh://c28c78299f754fe18acdc061790575bb@preview-bluff.rhcloud.com/~/git/preview.git; \
+		git remote add rhc-preview ssh://529a1f7b4382ec44eb000276@preview-bluff.rhcloud.com/~/git/preview.git; \
 	fi
 	git push rhc-preview lian:master
 
