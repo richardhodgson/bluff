@@ -372,6 +372,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
         }
 
         impress('slides').init();
+        this.triggerReady();
     }
 
 
@@ -419,6 +420,10 @@ define(["jquery", "./vendor/impress.js"], function ($) {
     
     CircleView.prototype.hideNavElements = function () {
         $('.navigation').hide();
+    }
+
+    CircleView.prototype.triggerReady = function () {
+        $('.page').fadeIn(500);
     }
     
     function setup () {
