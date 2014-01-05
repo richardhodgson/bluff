@@ -242,10 +242,6 @@ define(["jquery", "./vendor/impress.js"], function ($) {
         $('.navigation').remove();
         $('#slides').addClass('shapes');
 
-        function convertAngle (i) {
-            return (Math.PI/180)*(i+(-180));
-        }
-
         this.$slides = $('.slide');
 
         var totalSlides = this.$slides.length,
@@ -254,11 +250,6 @@ define(["jquery", "./vendor/impress.js"], function ($) {
             radius = slideWidth * 1.5,
             radius = slideWidth * 10,
             segmentAngle = 360 / totalSlides;
-
-        var origin = {
-            'x': (slideWidth) / 2,
-            'y': (slideHeight) / 2
-        }
 
         this.$slides.css({
             'width':    slideWidth,
@@ -314,67 +305,52 @@ define(["jquery", "./vendor/impress.js"], function ($) {
 
         addCircle($canvas, (largeCircleSize*1.6), (canvasHeight - largeCircleSize*1.4), (largeCircleSize * 0.9), 'rgba(255, 150, 0, 0.1)');
 
-        function positionSlide (number) {
-            var rotation = number * segmentAngle,
-                angle    = convertAngle(rotation),
-                x        = (radius*Math.cos(angle)) + origin.x,
-                y        = (radius*Math.sin(angle)) + origin.y;
-
-            var $el = $('#slide' + number);
-            $el.attr('data-x', x);
-            $el.attr('data-y', y);
-            $el.attr('data-rotate', rotation);
-
-            //TODO abstract all this out
-            // measuring for contents re-positioning
-            var $slideChildren = $el.children();
-
-            var $slideMeasure = $el.wrapInner('<div class="slide-measure" style="display: inline; overflow: visible; position: relative; z-index: 10" />').find('.slide-measure');
-
-            // font size
-            var width = $slideMeasure.width();
-            var height = $slideMeasure.height();
-
-            var contentRatioWidth = Math.floor(slideWidth / width),
-                contentRatioHeight = Math.floor(slideHeight / height);
-
-            var fontSize = ((contentRatioWidth > contentRatioHeight) ? contentRatioHeight : contentRatioWidth) / 1.15,
-                fontSize = Math.round((fontSize * 10)) / 10; // round to 1 decimal place
-
-            $el.css('fontSize', (fontSize) + 'em');
-
-            // vertical positioning
-            $slideMeasure.css('display', 'block');
-            var verticalPad = Math.floor((slideHeight - $slideMeasure.height()));
-            $el.css('paddingTop', verticalPad + 'px');
-
-            /*
-            TODO
-
-            - rename largeCircle to largeShape (might be a polygon in the future...)
-            - smaller detail circles
-            - circles animating in different direction
-            - circles appearing over copy (possibly covered by above)
-            - anything that looks like abstraction / encapsulation
-            - optimisation: remove anything from loop that can be computed once (e.g. circle min/max size)
-            - other slides can be visible... not sure how I feel about this.
-            - Pull font from google + host here
-            - colours?!
-            - optimisation: cache+clone circles of particular radius'
-            - CSS asset optimisation... cache headers, packing etc. Maybe drop a load screen on *shudder*.
-            - styles for other elements (em, strong, ul, ol, etc)
-
-            */
-        }
-
         for (var i = 1; i <= totalSlides; i++) {
-            positionSlide(i);
+            this.positionSlide(slideWidth, slideHeight, radius, segmentAngle, i);
         }
 
         impress('slides').init();
         this.triggerReady();
     }
 
+    CircleView.prototype.positionSlide = function (slideWidth, slideHeight, radius, segmentAngle, number) {
+
+        var originX  = slideWidth / 2,
+            originY  = slideHeight / 2,
+            rotation = number * segmentAngle,
+            angle    = this.rotationToAngle(rotation),
+            x        = (radius*Math.cos(angle)) + originX,
+            y        = (radius*Math.sin(angle)) + originY;
+
+        var $el = $('#slide' + number);
+        $el.attr('data-x', x);
+        $el.attr('data-y', y);
+        $el.attr('data-rotate', rotation);
+
+        // Calculate the font-size for the slide contents.
+        var $slideChildren = $el.children();
+
+        var $slideMeasure = $el.wrapInner('<div class="slide-measure" style="display: inline; overflow: visible; position: relative; z-index: 10" />').find('.slide-measure');
+
+        var width  = $slideMeasure.width(),
+            height = $slideMeasure.height(),
+            contentRatioWidth = Math.floor(slideWidth / width),
+            contentRatioHeight = Math.floor(slideHeight / height);
+
+        var fontSize = ((contentRatioWidth > contentRatioHeight) ? contentRatioHeight : contentRatioWidth) / 1.15,
+            fontSize = Math.round((fontSize * 10)) / 10; // round to 1 decimal place
+
+        $el.css('fontSize', fontSize + 'em');
+
+        // vertical positioning
+        $slideMeasure.css('display', 'block');
+        var verticalPad = Math.floor((slideHeight - $slideMeasure.height()));
+        $el.css('paddingTop', verticalPad + 'px');
+    }
+
+    CircleView.prototype.rotationToAngle = function (i) {
+        return (Math.PI/180)*(i+(-180));
+    }
 
     CircleView.prototype.showActions = function () {
         $('.actions').fadeIn();
