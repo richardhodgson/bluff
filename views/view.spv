@@ -4,8 +4,8 @@
     <script>
         document.getElementsByTagName('html')[0].className = 'js';
     </script>
-    <style>
-        html.js body .page { display: none }
+    <style id="reveal">
+        html.js body .page { visibility: hidden }
     </style>
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" media="screen" href="/style/presentation.css"/>

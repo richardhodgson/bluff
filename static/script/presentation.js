@@ -399,7 +399,10 @@ define(["jquery", "./vendor/impress.js"], function ($) {
     }
 
     CircleView.prototype.triggerReady = function () {
-        $('.page').fadeIn(500);
+        var page = $('.page');
+        page.css('display', 'none');
+        $('#reveal').remove();
+        page.fadeIn(500);
     }
     
     function setup () {
