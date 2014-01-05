@@ -22,3 +22,10 @@ server: ./node_modules
 	@ export BLUFF_DB_NAME=bluff; \
 	echo "Starting bluff on 0.0.0.0:8090"; \
 	node server.js
+
+dev: ./node_modules
+	@ export BLUFF_DB_NAME=bluff; \
+	echo "Starting bluff for development on 0.0.0.0:8090"; \
+	./node_modules/.bin/proton --reload --port 8090
+
+.PHONY: test deploy deploy-live server dev
