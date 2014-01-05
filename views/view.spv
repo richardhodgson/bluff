@@ -36,6 +36,15 @@
             display: block;
         }
 
+        .shapes .slide em {
+            color: #444;
+            margin: 0 0.02em 0 -0.13em;
+        }
+
+        .shapes .slide strong {
+            color: rgb(255, 150, 0);
+        }
+
         #shapes-bg {
             -webkit-animation: rotation 360s infinite linear;
             animation: rotation 360s infinite linear;
