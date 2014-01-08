@@ -2,12 +2,13 @@
 
 <~method head>
     <style><% this.output(this.args.css) %></style>
-    <script><% this.output(this.args.requireJquery) %></script>
+    <script><% this.output(this.args.jquery) %></script>
+    <script><% this.output(this.args.impress) %></script>
     
     <script>
         function define (deps, module) {
             $(function () {
-                module($);
+                module($, impress);
             });
         }
     </script>
@@ -15,3 +16,4 @@
 </~method>
 
 <~method actions></~method>
+<~method tracking()></~method>
