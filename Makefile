@@ -1,5 +1,11 @@
 SHELL = /bin/bash
 
+import-and-patch-impress:
+	curl --progress-bar https://raw.github.com/bartaz/impress.js/master/js/impress.js \
+	| sed -e 's/document.body/document.documentElement/' \
+	> ./static/script/vendor/impress.js \
+	#see https://github.com/bartaz/impress.js/issues/113
+
 ./node_modules:
 	npm install
 
