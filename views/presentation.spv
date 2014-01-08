@@ -9,7 +9,7 @@
 
 <~method actions(slug)>
     <p class="actions">
-        <!--a href="/p/<%= slug %>/download">Download<span> this presentation</span></a--!><%
+        <a href="/p/<%= slug %>/download">Download<span> this presentation</span></a><%
       %><a href="/p/<%= slug %>/edit">Edit<span> this presentation</span></a>
     </p>
 </~method>
