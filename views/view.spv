@@ -7,6 +7,17 @@
     <style id="reveal">
         html.js body .page { visibility: hidden }
     </style>
+    <style>
+        @font-face {
+            font-family: 'PTSansNarrowBold';
+            font-weight: 700;
+            src: url('/style/font/pt_sans-narrow-web-bold.eot');
+            src: url('/style/font/pt_sans-narrow-web-bold.eot') format('embedded-opentype'),
+                 url('/style/font/pt_sans-narrow-web-bold.woff') format('woff'),
+                 url('/style/font/pt_sans-narrow-web-bold.ttf') format('truetype'),
+                 url('/style/font/pt_sans-narrow-web-bold.svg#PTSansNarrowBold') format('svg');
+        }
+    </style>
     <link rel="stylesheet" type="text/css" media="screen" href="/style/presentation.css"/>
     <script src="/script/vendor/require-jquery.js"></script>
     <script>

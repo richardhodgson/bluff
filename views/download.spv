@@ -1,6 +1,17 @@
 <~inherit "/presentation.spv" />
 
 <~method head>
+    <style>
+        @font-face {
+        font-family: 'PTSansNarrowBold';
+        font-weight: 700;
+        src: url('data:application/font-eot;base64,<% this.output(this.args.eot) %>');
+        src: url('data:application/font-eot;base64,<% this.output(this.args.eot) %>') format('embedded-opentype'),
+             url('data:application/font-woff;base64,<% this.output(this.args.woff) %>') format('woff'),
+             url('data:application/font-ttf;base64,<% this.output(this.args.ttf) %>') format('truetype');
+        }
+    </style>
+
     <style><% this.output(this.args.css) %></style>
     <script><% this.output(this.args.jquery) %></script>
     <script><% this.output(this.args.impress) %></script>
