@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'PTSansNarrowBold';
+    font-weight: 700;
+    src: url('font/pt_sans-narrow-web-bold.eot');
+    src: url('font/pt_sans-narrow-web-bold.eot') format('embedded-opentype'),
+         url('./font/pt_sans-narrow-web-bold.woff') format('woff'),
+         url('font/pt_sans-narrow-web-bold.ttf') format('truetype'),
+         url('font/pt_sans-narrow-web-bold.svg#PTSansNarrowBold') format('svg');
+}
+
 html, body {
     height: 100%;
 }
@@ -13,9 +23,9 @@ body, div, p, pre, blockquote, ul, ol, li {
 
 .shapes .slide {
     position: absolute;
-    font-family: 'PT Sans Narrow', sans-serif;
-    font-size: 1em;
+    font-family: 'PTSansNarrowBold', sans-serif;
     font-weight: bold;
+    font-size: 1em;
     line-height: 1em;
     text-align: center;
     letter-spacing: -0.02em;

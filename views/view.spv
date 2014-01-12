@@ -7,7 +7,6 @@
     <style id="reveal">
         html.js body .page { visibility: hidden }
     </style>
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" media="screen" href="/style/presentation.css"/>
     <script src="/script/vendor/require-jquery.js"></script>
     <script>
