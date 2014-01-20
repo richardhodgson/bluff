@@ -74,12 +74,21 @@ define(["jquery", "./vendor/impress.js"], function ($) {
 
         addCircle($canvas, (largeCircleSize*1.6), (canvasHeight - largeCircleSize*1.4), (largeCircleSize * 0.9), 'rgba(255, 150, 0, 0.1)');
 
-        for (var i = 1; i <= totalSlides; i++) {
-            this.positionSlide(slideWidth, slideHeight, radius, segmentAngle, i);
-        }
+        var self = this;
+        // chrome 32.0.1700.77 calculates slide contents height incorrectly.
+        setTimeout(
+            function () {
 
-        impress('slides').init();
-        this.triggerReady();
+                for (var i = 1; i <= totalSlides; i++) {
+                    self.positionSlide(slideWidth, slideHeight, radius, segmentAngle, i);
+                }
+
+                impress('slides').init();
+                self.triggerReady();
+
+            },
+            100
+        );
     }
 
     CircleView.prototype.positionSlide = function (slideWidth, slideHeight, radius, segmentAngle, number) {
