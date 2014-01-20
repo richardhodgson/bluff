@@ -99,7 +99,7 @@ define(["jquery", "./vendor/impress.js"], function ($) {
         // Calculate the font-size for the slide contents.
         var $slideChildren = $el.children();
 
-        var $slideMeasure = $el.wrapInner('<div class="slide-measure" style="display: inline; overflow: visible; position: relative; z-index: 10" />').find('.slide-measure');
+        var $slideMeasure = $el.wrapInner('<div class="slide-measure" style="display: block; overflow: visible; z-index: 10" />').find('.slide-measure');
 
         var width  = $slideMeasure.width(),
             height = $slideMeasure.height(),
