@@ -6,7 +6,7 @@
         <meta name="viewport" content="width = 504" />
         
         <~method head>
-            <link rel="stylesheet" type="text/css" media="screen" href="/style/site.css"/>
+            <link rel="stylesheet" type="text/css" media="screen" href="<%= this.args.staticPrefix %>/style/site.css"/>
         </~method>
         <%  this.head() %>
         <%  this.tracking() %>
