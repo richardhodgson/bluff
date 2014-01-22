@@ -6,10 +6,11 @@ exports.test = new litmus.Test('static-urls.js', function () {
     var staticUrls = require('../lib/static-urls'),
         test       = this;
     
-    this.plan(4);
+    this.plan(6);
 
-    var fixtureFile1 = __dirname + "/fixtures/static/style.css",
-        fixtureFile2 = __dirname + "/fixtures/static/script.js";
+    var fixtureRoot  = __dirname + "/fixtures/static", 
+        fixtureFile1 = fixtureRoot + "/style.css",
+        fixtureFile2 = fixtureRoot + "/script.js";
 
     fileWrite(fixtureFile1, "hello world");
     fileWrite(fixtureFile2, "I am some script");
@@ -66,6 +67,27 @@ exports.test = new litmus.Test('static-urls.js', function () {
             });
         });
     });
+
+    test.async('listFiles', function (handle) {
+
+        staticUrls.listFiles(fixtureRoot).then(function (files) {
+
+            test.is(files.length, 4, "listFiles lists files in a path");
+            test.is(
+                files,
+                [
+                    fixtureRoot + "/script.js",
+                    fixtureRoot + "/style.css",
+                    fixtureRoot + "/subdirectory/other.js",
+                    fixtureRoot + "/subdirectory/another/test.css"
+                ],
+                "Expected files were found"
+            );
+
+            handle.resolve();
+        });
+    });
+
 });
 
 function fileWrite (path, contents) {
