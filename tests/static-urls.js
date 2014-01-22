@@ -6,7 +6,7 @@ exports.test = new litmus.Test('static-urls.js', function () {
     var staticUrls = require('../lib/static-urls'),
         test       = this;
     
-    this.plan(6);
+    this.plan(8);
 
     var fixtureRoot  = __dirname + "/fixtures/static", 
         fixtureFile1 = fixtureRoot + "/style.css",
@@ -68,6 +68,31 @@ exports.test = new litmus.Test('static-urls.js', function () {
         });
     });
 
+    test.async('generatePrefixForPath', function (handle) {
+
+        staticUrls.generatePrefixForPath(fixtureRoot).then(function (prefix) {
+
+            test.is(
+                typeof prefix,
+                "string",
+                "generatePrefixForPath returns a string for multiple files"
+            );
+
+            var previous_prefix = prefix;
+
+            staticUrls.generatePrefixForPath(fixtureRoot + "/subdirectory").then(function (prefix) {
+
+                test.not(
+                    prefix,
+                    previous_prefix,
+                    "generatePrefixForPath returns a different string for a different file path"
+                );
+
+                handle.resolve();
+            });
+        });
+    });
+    
     test.async('listFiles', function (handle) {
 
         staticUrls.listFiles(fixtureRoot).then(function (files) {
