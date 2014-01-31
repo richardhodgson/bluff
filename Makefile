@@ -16,7 +16,7 @@ deploy:
 	@ if [ -z "$(shell git remote | grep rhc-preview)" ]; then \
 		git remote add rhc-preview ssh://529a1f7b4382ec44eb000276@preview-bluff.rhcloud.com/~/git/preview.git; \
 	fi
-	git push rhc-preview circles:master
+	git push rhc-preview master
 
 deploy-live:
 	@ if [ -z "$(shell git remote | grep rhc-production)" ]; then \
