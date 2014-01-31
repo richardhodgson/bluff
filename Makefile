@@ -34,4 +34,16 @@ dev: ./node_modules
 	echo "Starting bluff for development on 0.0.0.0:8090"; \
 	./node_modules/.bin/proton --reload --port 8090
 
-.PHONY: test deploy deploy-live server dev
+openshift-db-backup: -backup-path
+	@ mongoexport --host "$OPENSHIFT_MONGODB_DB_HOST" --port "$OPENSHIFT_MONGODB_DB_PORT" --db bluff -o "$(BACKUP_PATH)" --collection presentations
+
+openshift-db-restore: -backup-path
+	@ mongoimport -d "$BLUFF_DB_NAME" -c presentation --file "$(BACKUP_PATH)" --host "$OPENSHIFT_MONGODB_DB_HOST" --port "$OPENSHIFT_MONGODB_DB_PORT" --username "$OPENSHIFT_MONGODB_DB_USERNAME" --password "$OPENSHIFT_MONGODB_DB_PASSWORD"
+
+-backup-path:
+	@ if [ -z "$(BACKUP_PATH)" ]; then \
+		echo "BACKUP_PATH parameter not defined" >&2; \
+		exit 1; \
+	fi
+
+.PHONY: test deploy deploy-live server dev openshift-db-backup openshift-db-restore -backup-path
