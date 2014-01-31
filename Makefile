@@ -19,10 +19,10 @@ deploy:
 	git push rhc-preview circles:master
 
 deploy-live:
-	@ if [ -z "$(shell git remote | grep rhc-live)" ]; then \
-		git remote add rhc-live ssh://0a0e49b9001141e5b2faa428d2cd22a6@live-bluff.rhcloud.com/~/git/live.git; \
+	@ if [ -z "$(shell git remote | grep rhc-production)" ]; then \
+		git remote add rhc-production ssh://52e82eae5973ca7a8b00005e@production-bluff.rhcloud.com/~/git/production.git \
 	fi
-	git push rhc-live master
+	git push rhc-production master
 
 server: ./node_modules
 	@ export BLUFF_DB_NAME=bluff; \
