@@ -8,6 +8,8 @@ Create presentations with markdown.
 
 ## Development
 
+Bluff is written for Node JS and expects at least version 0.6.0. The presentations are stored in Mongo DB.
+
 Clone the repo...
 
     git clone git://github.com/richardhodgson/bluff.git
@@ -21,8 +23,8 @@ Run the tests.
 
     make test
 
-Start the app with [proton](https://github.com/usenode/proton.js).
+Start the app in development mode.
 
-    proton -r
+    make dev
 
-Bluff should now be running on [http://localhost:8000](http://localhost:8000).
+Bluff should now be running on [http://localhost:8090](http://localhost:8090).
