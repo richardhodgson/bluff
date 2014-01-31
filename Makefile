@@ -20,7 +20,7 @@ deploy:
 
 deploy-live:
 	@ if [ -z "$(shell git remote | grep rhc-production)" ]; then \
-		git remote add rhc-production ssh://52e82eae5973ca7a8b00005e@production-bluff.rhcloud.com/~/git/production.git \
+		git remote add rhc-production ssh://52e82eae5973ca7a8b00005e@production-bluff.rhcloud.com/~/git/production.git; \
 	fi
 	git push rhc-production master
 
